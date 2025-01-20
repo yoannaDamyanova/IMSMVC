@@ -1,0 +1,96 @@
+﻿@using static IMS.Common.ErrorMessageConstants
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Best Fitness Class Booking</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        /* Custom CSS for color scheme */
+        body {
+            background-color: white;
+            color: black;
+        }
+        header {
+            background-color: #198754; /* Custom green shade */
+            color: white;
+        }
+        header .navbar {
+            padding: 1rem;
+        }
+        header .navbar-brand {
+            font-weight: bold;
+            color: white;
+        }
+        header .navbar-brand:hover {
+            color: #145c32; /* Darker green for hover effect */
+        }
+        footer {
+            background-color: #198754; /* Custom green shade */
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .btn-custom {
+            background-color: #198754; /* Custom green shade */
+            color: white;
+            border: none;
+        }
+        .btn-custom:hover {
+            background-color: #145c32; /* Darker green on hover */
+        }
+        .btn-link-custom {
+            color: #198754; /* Green color for links */
+        }
+        .btn-link-custom:hover {
+            color: #145c32; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-light bg-transparent border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Fitness Class Booking System</a>
+                <div class="d-flex">
+                    @await Component.InvokeAsync(nameof(MainMenuComponent))
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer text-light">
+        <div class="container">
+            &copy; @DateTime.Today.Year - Fitness Class Booking
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    @if (TempData[UserMessageSuccess] != null)
+    {
+        <script defer>
+            message.showSuccess('@TempData[UserMessageSuccess]');
+        </script>
+    }
+    @if (TempData[UserMessageError] != null)
+    {
+        <script defer>
+            message.showError('@TempData[UserMessageError]');
+        </script>
+    }
+</body>
+</html>
