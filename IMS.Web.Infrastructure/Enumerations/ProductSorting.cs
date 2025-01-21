@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace IMS.Web.Infrastructure.Enumerations
 {
-    public enum FitnessClassSorting
+    public enum ProductSorting
     {
-        Duration = 1,
-        StartTime = 2,
-        Capacity = 3
+        PriceAscending = 1,
+        PriceDescending = 2,
+        CountAscening = 3,
+        CountDescening = 4
     }
 }

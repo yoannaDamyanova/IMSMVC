@@ -23,7 +23,7 @@
                 @if (@* await instructorService.ExistsByUserIdAsync(User.Id()) == false && *@ User.IsAdmin() == false)
                 {
                     <li class="nav-item">
-                        <a class="nav-link text-white btn btn-success rounded-pill px-4 py-2" asp-area="" asp-controller="Instructor" asp-action="Become">Become Instructor</a>
+                        <a class="nav-link text-white btn btn-success rounded-pill px-4 py-2" asp-area="" asp-controller="Employee" asp-action="Become">Стани служител</a>
                     </li>
                 }
 @*                 else if (await instructorService.ExistsByUserIdAsync(User.Id()) == true)
@@ -37,7 +37,7 @@
                 } *@
 
                 <li class="nav-item">
-                    <a class="nav-link text-white btn btn-success rounded-pill px-4 py-2" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @userName!</a>
+                    <a class="nav-link text-white btn btn-success rounded-pill px-4 py-2" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Здравейте @userName!</a>
                 </li>
                 <li class="nav-item">
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
@@ -48,10 +48,10 @@
             else
             {
                 <li class="nav-item">
-                    <a class="nav-link text-white btn btn-success rounded-pill px-4 py-2" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                    <a class="nav-link text-white btn btn-success rounded-pill px-4 py-2" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white btn btn-success rounded-pill px-4 py-2" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    <a class="nav-link text-white btn btn-success rounded-pill px-4 py-2" asp-area="Identity" asp-page="/Account/Login">Вход</a>
                 </li>
             }
         </ul>

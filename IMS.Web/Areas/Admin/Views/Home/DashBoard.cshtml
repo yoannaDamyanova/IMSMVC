@@ -1,0 +1,69 @@
+﻿﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h2 class="display-4">Добре дошъл Админ!</h2>
+                </div>
+                <div class="card-body">
+                    <p class="lead mb-1 mt-3">
+                        Това е твоето администраторско пространство - можеш да <b>преглеждаш</b>, <b>създаваш</b>, <b>изтриваш</b> и <b>редактираш</b> продукти.
+                    </p>
+                    <p class="lead mt-1">
+                        Можеш да виждаш всички<b>потребители и служители</b>, всички <b>производители</b>, и всички <b>търговски обекти</b> в системата.
+                    </p>
+                    <hr class="my-4">
+                    <div class="d-flex justify-content-center flex-wrap">
+                        <a asp-area="" asp-controller="Product" asp-action="All" class="btn btn-custom btn-lg mx-2 mb-3">
+                            Продукти
+                        </a>
+                        <a asp-area="Admin" asp-controller="Product" asp-action="Add" class="btn btn-custom btn-lg mx-2 mb-3">
+                            Добави продукт
+                        </a>
+                        <a asp-area="Admin" asp-controller="Employee" asp-action="All" class="btn btn-custom btn-lg mx-2 mb-3">
+                            Служители
+                        </a>
+                        <a asp-area="Admin" asp-controller="Supplier" asp-action="All" class="btn btn-custom btn-lg mx-2 mb-3">
+                            Производители
+                        </a>
+                        <a asp-area="Admin" asp-controller="Supplier" asp-action="All" class="btn btn-custom btn-lg mx-2 mb-3">
+                            Обекти
+                        </a>
+                        <a asp-area="Admin" asp-controller="User" asp-action="All" class="btn btn-custom btn-lg mx-2 mb-3">
+                            Потребители
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Custom CSS to match the previous theme */
+    .btn-custom {
+        background-color: #198754; /* Custom green shade */
+        color: white;
+        border: none;
+    }
+
+        .btn-custom:hover {
+            background-color: #145c32; /* Darker green on hover */
+        }
+
+    .card {
+        border-radius: 8px;
+    }
+
+    .card-header {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .card-body {
+        background-color: #f8f9fa;
+    }
+</style>

@@ -19,10 +19,6 @@
     <ProjectReference Include="..\IMS.Web.ViewModels\IMS.Web.ViewModels.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Licenses\" />
-  </ItemGroup>
-
   <ProjectExtensions><VisualStudio><UserProperties licenses_4locallicensenumbers_1json__JsonSchema="https://appsemble.app/api.json" /></VisualStudio></ProjectExtensions>
 
 </Project>

@@ -1,0 +1,34 @@
+﻿@model ProductServiceModel
+@inject IProductService productService
+
+<div class="col-md-4">
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <!-- Class Title -->
+            <h5 class="card-title text-center">@Model.Name</h5>
+            <p class="text-center text-muted">@Model.Price</p>
+
+            <!-- Class Details -->
+            <hr />
+            <div class="mb-3">
+                <h6 class="text-secondary">Налични:</h6>
+                <p>@Model.Count бр.</p>
+            </div>
+
+            <!-- Action Buttons for Authenticated Users -->
+           @if (User?.Identity?.IsAuthenticated == true)
+            {
+                <div class="d-grid gap-2">
+                    <a asp-controller="Product" asp-action="Details" asp-route-fitnessClassId="@Model.Id" class="btn btn-outline-primary">Детайли</a>
+
+                    @if (User.IsAdmin())
+                    {
+                        <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-fitnessClassId="@Model.Id" class="btn btn-warning">Редактирай</a>
+                        <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-fitnessClassId="@Model.Id" class="btn btn-danger">Изтрий</a>
+                    }
+                    @*to do: add request by employee*@
+                </div>
+            }
+        </div>
+    </div>
+</div>

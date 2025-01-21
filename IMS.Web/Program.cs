@@ -71,9 +71,9 @@ namespace IMS.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "FitnessClass Details",
-                    pattern: "/FitnessClass/Details/{id}/{information}",
-                    defaults: new { Controller = "FitnessClass", Action = "Details" }
+                    name: "Product Details",
+                    pattern: "/Product/Details/{id}/{information}",
+                    defaults: new { Controller = "Product", Action = "Details" }
                 );
 
                 endpoints.MapControllerRoute(

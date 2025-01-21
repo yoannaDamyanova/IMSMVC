@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Best Fitness Class Booking</title>
+    <title>@ViewData["Title"] - Stockly</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -54,7 +54,7 @@
     <header>
         <nav class="navbar navbar-light bg-transparent border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Fitness Class Booking System</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Stockly</a>
                 <div class="d-flex">
                     @await Component.InvokeAsync(nameof(MainMenuComponent))
                     <partial name="_LoginPartial" />
@@ -70,7 +70,7 @@
 
     <footer class="footer text-light">
         <div class="container">
-            &copy; @DateTime.Today.Year - Fitness Class Booking
+            &copy; @DateTime.Today.Year - Stockly
         </div>
     </footer>
 

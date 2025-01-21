@@ -10,22 +10,22 @@ namespace IMS.Web.Controllers
     public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
-        //private readonly IFitnessClassService fitnessService;
+        private readonly IProductService productService;
 
         public HomeController(
-            ILogger<HomeController> logger
-            /*IFitnessClassService _fitnessService*/)
+            ILogger<HomeController> logger,
+            IProductService productService)
         {
             _logger = logger;
-            //fitnessService = _fitnessService;
+            this.productService = productService;
         }
 
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            //var model = await fitnessService.LastFiveHousesAsync();
+            var model = await productService.LastSevenProductsAsync();
 
-            return View();
+            return View(model);
         }
 
         [AllowAnonymous]
