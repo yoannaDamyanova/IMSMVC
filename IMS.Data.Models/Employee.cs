@@ -22,5 +22,10 @@ namespace IMS.Data.Models
 
         [ForeignKey(nameof(UserId))]
         public virtual ApplicationUser User { get; set; } = null!;
+
+        [Required]
+        public int CommercialSiteId { get; set; }
+
+        public CommercialSite CommercialSite { get; set; } = null!;
     }
 }

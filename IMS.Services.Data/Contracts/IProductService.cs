@@ -27,7 +27,7 @@ namespace IMS.Services.Data.Contracts
 
         Task<Product> GetByIdAsync(Guid productId);
 
-        Task<ProductFormModel?> GetFitnessClassFormModelByIdAsync(string id);
+        Task<ProductFormModel?> GetProductFormModelByIdAsync(string id);
 
         Task<IEnumerable<ProductIndexServiceModel>> LastSevenProductsAsync();
 

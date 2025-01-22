@@ -36,5 +36,24 @@ namespace IMS.Web.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(string productId)
+        {
+            Guid id = Guid.Empty;
+            if (!IsGuidValid(productId, ref id))
+            {
+                return BadRequest();
+            }
+
+            if (await productService.ExistsAsync(id) == false)
+            {
+                return BadRequest();
+            }
+
+            var model = await productService.ProductDetailsByIdAsync(id);
+
+            return View(model);
+        }
     }
 }

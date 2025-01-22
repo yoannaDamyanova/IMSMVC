@@ -1,0 +1,39 @@
+﻿@model ProductDetailsServiceModel
+@inject IProductService productService
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Fitness Class Information -->
+            <div class="mb-4">
+                <p class="display-4 text-primary"><u>@Model.Name</u></p>
+                <p>@Model.Description</p>
+                <p><strong>Катеогория:</strong> @Model.SupplierName</p>
+            </div>
+
+            <div class="d-flex flex-wrap mb-4">
+                @if (this.User?.Identity?.IsAuthenticated == true)
+                {
+                    <!-- Edit/Delete/Cancel Actions (For Admin) -->
+                    @if (User.IsAdmin())
+                    {
+                        <a class="btn btn-warning mb-2 mb-md-0 mr-md-2" asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-productId="@Model.Id">Редактиране</a>
+                        <a class="btn btn-danger mb-2 mb-md-0 mr-md-2" asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-productId="@Model.Id">Изтриване</a>
+                    }
+                }
+            </div>
+
+            <!-- Supplier Info Card -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Производител</h5>
+                    <p class="card-text"><strong>Name:</strong> @Model.SupplierName</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

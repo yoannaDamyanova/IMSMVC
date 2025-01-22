@@ -122,12 +122,13 @@ namespace IMS.Services.Data
             return await repository.GetByIdAsync<Product>(productId);
         }
 
-        public async Task<ProductFormModel?> GetFitnessClassFormModelByIdAsync(string id)
+        public async Task<ProductFormModel?> GetProductFormModelByIdAsync(string id)
         {
             return await repository.AllReadOnly<Product>()
                 .Where(p => p.Id.ToString() == id)
                 .Select(p => new ProductFormModel()
                 {
+                    Id = p.Id.ToString(),
                     Name = p.Name,
                     Description = p.Description,
                     CategoryId = p.CategoryId,

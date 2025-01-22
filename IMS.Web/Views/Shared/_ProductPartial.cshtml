@@ -19,12 +19,12 @@
            @if (User?.Identity?.IsAuthenticated == true)
             {
                 <div class="d-grid gap-2">
-                    <a asp-controller="Product" asp-action="Details" asp-route-fitnessClassId="@Model.Id" class="btn btn-outline-primary">Детайли</a>
+                    <a asp-controller="Product" asp-action="Details" asp-route-productId="@Model.Id" class="btn btn-outline-primary">Детайли</a>
 
                     @if (User.IsAdmin())
                     {
-                        <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-fitnessClassId="@Model.Id" class="btn btn-warning">Редактирай</a>
-                        <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-fitnessClassId="@Model.Id" class="btn btn-danger">Изтрий</a>
+                        <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-productId="@Model.Id" class="btn btn-warning">Редактирай</a>
+                        <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-productId="@Model.Id" class="btn btn-danger">Изтрий</a>
                     }
                     @*to do: add request by employee*@
                 </div>

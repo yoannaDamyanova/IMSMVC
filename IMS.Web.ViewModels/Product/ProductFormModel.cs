@@ -9,7 +9,7 @@ namespace IMS.Web.ViewModels.Product
 {
     public class ProductFormModel : IProductModel
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; } = null!;
 
         [Required(ErrorMessage = RequiredMessage)]
         [StringLength(MaxTitleLength,
