@@ -9,10 +9,12 @@ namespace IMS.Services.Data
     public class EmployeeService : BaseService, IEmployeeService
     {
         private readonly IRepository repository;
+        ICommercialsiteProductService commercialSiteProductService;
 
-        public EmployeeService(IRepository repository)
+        public EmployeeService(IRepository repository, ICommercialsiteProductService commercialSiteProductService)
         {
             this.repository = repository;
+            this.commercialSiteProductService = commercialSiteProductService;
         }
 
         public async Task CreateAsync(BecomeEmployeeFormModel model, string userId)
@@ -61,6 +63,32 @@ namespace IMS.Services.Data
             }
 
             return empl.YearsOfExperience;
+        }
+
+        public async Task<bool> IsApprovedById(string userId)
+        {
+            Employee empl = await repository.AllReadOnly<Employee>()
+                .FirstOrDefaultAsync(e => e.UserId == userId);
+
+            return empl != null && empl.IsApproved;
+        }
+
+        public async Task<EmployeeOfficeViewModel> GetEmployeeOfficeByUserId(string employeeId)
+        {
+            return await repository.AllReadOnly<Employee>()
+               .Where(e => e.UserId == employeeId)
+               .Include(e => e.User)
+               .Include(e => e.CommercialSite)
+               .Select(e => new EmployeeOfficeViewModel()
+               {
+                   Name = e.User.FirstName + " " + e.User.LastName,
+                   YearsOfExperience = e.YearsOfExperience,
+                   CommercialSiteName = e.CommercialSite.Name,
+                   CommercialSiteId = e.CommercialSite.Id,
+
+                   Products = commercialSiteProductService.GetAllAvailableProducts(e.CommercialSiteId ?? 0)
+               }).FirstAsync();
+
         }
     }
 }

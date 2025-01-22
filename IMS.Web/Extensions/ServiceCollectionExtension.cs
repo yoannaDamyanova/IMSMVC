@@ -13,7 +13,7 @@ namespace IMS.Web.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<IBaseService, BaseService>();
+            services.AddScoped<ICommercialSiteProductsService, BaseService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
 

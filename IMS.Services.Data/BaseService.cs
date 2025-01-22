@@ -2,7 +2,7 @@
 
 namespace IMS.Services.Data
 {
-    public class BaseService : IBaseService
+    public class BaseService : ICommercialSiteProductsService
     {
         public bool IsGuidValid(string? id, ref Guid parsedGuid)
         {

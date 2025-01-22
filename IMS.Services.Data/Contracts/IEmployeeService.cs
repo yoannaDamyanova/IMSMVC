@@ -17,5 +17,9 @@ namespace IMS.Services.Data.Contracts
         public Task<Employee> GetByIdAsync(int userId);
 
         Task<int?> GetEmployeeIdByUserId(string userId);
+
+        Task<EmployeeOfficeViewModel> GetEmployeeOfficeByUserId(string employeeId);
+
+        Task<bool> IsApprovedById(string userId);
     }
 }

@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IMS.Data.Models
 {
@@ -23,9 +20,12 @@ namespace IMS.Data.Models
         [ForeignKey(nameof(UserId))]
         public virtual ApplicationUser User { get; set; } = null!;
 
-        [Required]
-        public int CommercialSiteId { get; set; }
+        public int? CommercialSiteId { get; set; }
 
-        public CommercialSite CommercialSite { get; set; } = null!;
+        [ForeignKey(nameof(CommercialSiteId))]
+        public CommercialSite? CommercialSite { get; set; }
+
+        [Required]
+        public bool IsApproved { get; set; } = false;
     }
 }

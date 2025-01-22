@@ -50,11 +50,11 @@ namespace IMS.Data.SeedDb
         public SeedData()
         {
             SeedUsers();
+            SeedCommercialSites();
             SeedEmployees();
             SeedCategories();
             SeedProdutcs();
             SeedSuppliers();
-            SeedCommercialSites();
             SeedCommercialSitesProducts();
         }
 
@@ -113,13 +113,15 @@ namespace IMS.Data.SeedDb
             {
                 Id = 1,
                 UserId = EmployeeUser.Id,
-                YearsOfExperience = 10
+                YearsOfExperience = 10,
+                CommercialSiteId = 1,
+                IsApproved = true
             };
             AdminEmployee = new Employee()
             {
                 Id = 2,
                 UserId = AdminUser.Id,
-                YearsOfExperience = 30
+                YearsOfExperience = 30,
             };
         }
 

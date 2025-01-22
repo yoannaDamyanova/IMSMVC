@@ -1,0 +1,35 @@
+﻿@model BecomeEmployeeFormModel
+
+@{
+    ViewBag.Title = "Стани служител";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+@if (!ViewData.ModelState.IsValid && ViewData.ModelState["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewData.ModelState["Error"].Errors.First().ErrorMessage
+    </div>
+}
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form method="post" asp-action="Become" asp-controller="Employee">
+            <div class="form-group">
+                <label asp-for="YearsOfExperience" class="font-weight-bold">Години стаж</label>
+                <input asp-for="YearsOfExperience" class="form-control" >
+                <span asp-validation-for="YearsOfExperience" class="small text-danger"></span>
+            </div>
+
+            <div class="text-center">
+                <input class="btn btn-outline-success mt-3" type="submit" value="Save" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
