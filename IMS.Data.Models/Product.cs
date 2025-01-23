@@ -40,5 +40,7 @@ namespace IMS.Data.Models
         [Required]
         [ForeignKey(nameof(CategoryId))]
         public virtual Category Category { get; set; } = null!;
+
+        public bool IsAvailbale { get; set; } = true;
     }
 }

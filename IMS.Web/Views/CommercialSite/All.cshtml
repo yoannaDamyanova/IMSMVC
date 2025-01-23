@@ -1,0 +1,25 @@
+﻿@model IEnumerable<CommercialSiteViewModel>
+
+@{
+    ViewBag.Title = "Всички търговски обекти";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Търговски обекти</h2>
+
+    @if (Model.Any())
+    {
+        <div class="row">
+            @foreach (var site in Model)
+            {
+                <div class="col-md-4">
+                    <partial name="_CommercialSitePartial" model="site" />
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p class="text-center text-muted">В момента няма регистрирани търговски обекти.</p>
+    }
+</div>

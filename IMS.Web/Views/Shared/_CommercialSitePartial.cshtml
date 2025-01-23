@@ -1,0 +1,14 @@
+﻿@model CommercialSiteViewModel
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <!-- Commercial Site Name -->
+        <h4 class="card-title text-center">@Model.Name</h4>
+
+        <!-- Детайли Button -->
+        <a asp-controller="CommercialSite" asp-action="Details" asp-route-siteId="@Model.Id"
+           class="btn btn-outline-primary w-100">
+            Детайли
+        </a>
+    </div>
+</div>

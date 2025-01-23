@@ -46,7 +46,7 @@ namespace IMS.Services.Data
                 .FirstOrDefaultAsync(e => e.Id == employeeId);
         }
 
-        public async Task<int?> GetEmployeeIdByUserId(string userId)
+        public async Task<int> GetEmployeeIdByUserId(string userId)
         {
             return (await repository.All<Employee>()
                .FirstOrDefaultAsync(e => e.UserId == userId)).Id;

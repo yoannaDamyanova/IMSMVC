@@ -1,0 +1,39 @@
+﻿@model CommercialSiteViewModel
+
+@{
+    ViewBag.Title = @Model.Name;
+}
+
+<div class="container mt-5">
+
+    <!-- Commercial Site Name -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title">@Model.Name</h4>
+        </div>
+    </div>
+
+    <!-- Available Products -->
+    <div class="card">
+        <div class="card-header">
+            <h5>Налични продукти</h5>
+        </div>
+        <div class="card-body">
+            @if (Model.AvailableProducts?.Any() == true)
+            {
+                    <div class="row">
+                    @foreach (var product in Model.AvailableProducts)
+                    {
+                                <div class="col-md-5">
+                                    <partial name="_ProductPartial" model="product" />
+                                </div>
+                    }
+                    </div>
+            }
+            else
+            {
+                    <p class="text-muted">В момента в избрания обект няма налични продукти!</p>
+            }
+        </div>
+    </div>
+</div>

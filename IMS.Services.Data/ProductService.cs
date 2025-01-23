@@ -14,10 +14,12 @@ namespace IMS.Services.Data
     public class ProductService : BaseService, IProductService
     {
         private readonly IRepository repository;
+        private readonly ICommercialsiteProductService commercialsiteProductService;
 
-        public ProductService(IRepository _repository)
+        public ProductService(IRepository _repository, ICommercialsiteProductService commercialsiteProductService)
         {
             repository = _repository;
+            this.commercialsiteProductService = commercialsiteProductService;
         }
 
         public async Task<Guid> AddProductAsync(ProductFormModel model)
@@ -181,7 +183,7 @@ namespace IMS.Services.Data
             int classesPerPage = 1)
         {
             var classesToShow = await repository.AllReadOnly<Product>()
-                .Where(p => p.Count > 0)
+                .Where(p => p.IsAvailbale == true)
                 .Include(p => p.Supplier)
                 .Include(p => p.Category)
                 .ToListAsync();
@@ -227,6 +229,39 @@ namespace IMS.Services.Data
                 Products = products,
                 TotalProductsCount = totalProducts,
             };
+        }
+
+        public async Task RequestProductAsync(ProductRequestViewModel model)
+        {
+            Guid id = Guid.Empty;
+            IsGuidValid(model.Id, ref id);
+            var product = await repository.All<Product>()
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (model.Count - model.RequestedCount == 0)
+            {
+                product.IsAvailbale = false;
+            }
+
+            product.Count -= model.RequestedCount;
+
+            if (await commercialsiteProductService.ExistsById(model.Id))
+            {
+                var siteProduct = await commercialsiteProductService.GetById(model.Id);
+
+                siteProduct.ProductCount += model.RequestedCount;
+            }
+            else 
+            {
+                CommercialSiteProduct csp = new()
+                {
+                    CommercialSiteId = model.EmployeeSiteId,
+                    ProductId = product.Id,
+                    ProductCount = model.RequestedCount,
+                };
+                await repository.AddAsync(csp);
+            }
+            await repository.SaveChangesAsync();
         }
     }
 }

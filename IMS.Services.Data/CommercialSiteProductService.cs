@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace IMS.Services.Data
 {
-    internal class CommercialSiteProductService : BaseService, ICommercialsiteProductService
+    public class CommercialSiteProductService : BaseService, ICommercialsiteProductService
     {
         private readonly IRepository repository;
 
@@ -20,17 +20,42 @@ namespace IMS.Services.Data
             this.repository = repository;
         }
 
-        public IEnumerable<ProductIndexServiceModel> GetAllAvailableProducts(int commercialSiteId)
+        public async Task<bool> ExistsById(string productId)
+        {
+            Guid id = Guid.Empty;
+            if (!IsGuidValid(productId, ref id))
+            {
+                return false;
+            }
+
+            return await repository.AllReadOnly<CommercialSiteProduct>()
+                .AnyAsync(csp => csp.ProductId == id);
+        }
+
+        public IEnumerable<ProductServiceModel> GetAllAvailableProducts(int commercialSiteId)
         {
             return repository.AllReadOnly<CommercialSiteProduct>()
                 .Where(csp => csp.CommercialSiteId == commercialSiteId)
                 .Include(csp => csp.Product)
-                .Select(csp => new ProductIndexServiceModel()
+                .Select(csp => new ProductServiceModel()
                 {
                     Name = csp.Product.Name,
                     Price = csp.Product.Price,
-                    Id = csp.Product.Id.ToString(),
+                    Id = csp.Product.Id,
+                    Count = csp.ProductCount,
                 }).ToList();
+        }
+
+        public async Task<CommercialSiteProduct> GetById(string productId)
+        {
+            Guid id = Guid.Empty;
+            if (!IsGuidValid(productId, ref id))
+            {
+                return null;
+            }
+
+            return await repository.All<CommercialSiteProduct>()
+                .FirstOrDefaultAsync(csp => csp.ProductId == id);
         }
     }
 }

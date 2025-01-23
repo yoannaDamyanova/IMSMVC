@@ -39,5 +39,7 @@ namespace IMS.Services.Data.Contracts
             ProductSorting sorting = ProductSorting.PriceAscending,
             int currentPage = 1,
             int classesPerPage = 1);
+
+        Task RequestProductAsync(ProductRequestViewModel model);
     }
 }

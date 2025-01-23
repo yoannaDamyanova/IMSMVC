@@ -1,5 +1,6 @@
 ﻿@model ProductServiceModel
 @inject IProductService productService
+@inject IEmployeeService employeeService
 
 <div class="col-md-4">
     <div class="card mb-4 shadow-sm">
@@ -26,7 +27,10 @@
                         <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-productId="@Model.Id" class="btn btn-warning">Редактирай</a>
                         <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-productId="@Model.Id" class="btn btn-danger">Изтрий</a>
                     }
-                    @*to do: add request by employee*@
+                    @if (await employeeService.ExistsByUserIdAsync(User.Id()))
+                    {
+                        <a asp-controller="Product" asp-action="RequestProduct" asp-route-productId="@Model.Id" class="btn btn-outline-primary">Направи заявка</a>
+                    }
                 </div>
             }
         </div>

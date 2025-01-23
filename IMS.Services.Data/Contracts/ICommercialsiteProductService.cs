@@ -1,4 +1,5 @@
-﻿using IMS.Web.ViewModels.Product;
+﻿using IMS.Data.Models;
+using IMS.Web.ViewModels.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,10 @@ namespace IMS.Services.Data.Contracts
 {
     public interface ICommercialsiteProductService
     {
-        IEnumerable<ProductIndexServiceModel> GetAllAvailableProducts(int commercialSiteId)
+        IEnumerable<ProductServiceModel> GetAllAvailableProducts(int commercialSiteId);
+
+        Task<bool> ExistsById(string productId);
+
+        Task<CommercialSiteProduct> GetById(string productId);
     }
 }

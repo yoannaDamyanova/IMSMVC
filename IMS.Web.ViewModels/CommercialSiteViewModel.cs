@@ -9,8 +9,10 @@ namespace IMS.Web.ViewModels
 {
     public class CommercialSiteViewModel
     {
+        public int Id { get; set; }
+
         public string Name { get; set; } = null!;
 
-        public IEnumerable<ProductIndexServiceModel>? AvailableProducts { get; set; }
+        public IEnumerable<ProductServiceModel>? AvailableProducts { get; set; }
     }
 }

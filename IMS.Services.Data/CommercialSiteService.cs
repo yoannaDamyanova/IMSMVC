@@ -22,14 +22,27 @@ namespace IMS.Services.Data
             this.commercialsiteproductservice = commercialsiteproductservice;
         }
 
-        public IEnumerable<CommercialSiteViewModel> AllCommercialSites()
+        public IEnumerable<CommercialSiteViewModel> AllCommercialSitesAsync()
         {
             return repository.AllReadOnly<CommercialSite>()
                 .Select(cs => new CommercialSiteViewModel()
                 {
+                    Id = cs.Id,
                     Name = cs.Name,
-                    AvailableProducts = commercialsiteproductservice.GetAllAvailableProducts(cs.Id)
+                    AvailableProducts = commercialsiteproductservice.GetAllAvailableProducts(cs.Id),
                 }).ToList();
+        }
+
+        public async Task<bool> ExistsAsync(int id)
+        {
+            return await repository.AllReadOnly<CommercialSite>()
+                .AnyAsync(cs => cs.Id == id);
+        }
+
+        public async Task<CommercialSite> GetByIdAsync(int id)
+        {
+            return await repository.AllReadOnly<CommercialSite>()
+                .FirstOrDefaultAsync(cs => cs.Id == id);
         }
     }
 }

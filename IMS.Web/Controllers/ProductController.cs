@@ -1,4 +1,5 @@
 ﻿using IMS.Services.Data.Contracts;
+using IMS.Web.Attributes;
 using IMS.Web.ViewModels.Product;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -54,6 +55,41 @@ namespace IMS.Web.Controllers
             var model = await productService.ProductDetailsByIdAsync(id);
 
             return View(model);
+        }
+
+        [HttpGet]
+        [MustBeEmployee]
+        public async Task<IActionResult> RequestProduct(Guid productId)
+        {
+
+            if (await productService.ExistsAsync(productId) == false)
+            {
+                return BadRequest();
+            }
+
+            var product = await productService.GetByIdAsync(productId);
+            var suppliers = await productService.AllSuppliersAsync();
+            var supplier = suppliers.FirstOrDefault(s => s.Id == product.SupplierId);
+
+            var model = new ProductRequestViewModel()
+            {
+                Id = productId.ToString(),
+                Name = product.Name,
+                Price = product.Price,
+                SupplierName = supplier.Name,
+                Description = product.Description,
+                Count = product.Count,
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [MustBeEmployee]
+        public async Task<IActionResult> RequestProduct(ProductRequestViewModel model)
+        {
+            await productService.RequestProductAsync(model);
+            return RedirectToAction(nameof(All));
         }
     }
 }

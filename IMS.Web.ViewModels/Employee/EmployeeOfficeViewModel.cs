@@ -13,5 +13,6 @@ namespace IMS.Web.ViewModels.Employee
 
         public string CommercialSiteName { get; set; } = string.Empty;
 
-        public IEnumerable<ProductIndexServiceModel>? Products { get; set; }     }
+        public IEnumerable<ProductServiceModel>? Products { get; set; }     
+    }
 }

@@ -16,6 +16,8 @@ namespace IMS.Web.Extensions
             services.AddScoped<ICommercialSiteProductsService, BaseService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<ICommercialSiteService, CommercialSiteService>();
+            services.AddScoped<ICommercialsiteProductService, CommercialSiteProductService>();
 
             return services;
         }
