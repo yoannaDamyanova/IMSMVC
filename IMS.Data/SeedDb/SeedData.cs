@@ -1,6 +1,7 @@
 ﻿using IMS.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using static IMS.Web.Infrastructure.Constants.CustomClaims;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace IMS.Data.SeedDb
 {
@@ -180,7 +181,8 @@ namespace IMS.Data.SeedDb
                 Count = 150,
                 SupplierId = 1,
                 CategoryId = 3,
-                Description = "A flagship smartphone with a 6.1-inch AMOLED display, 256GB storage, and a powerful triple-camera system"
+                Description = "A flagship smartphone with a 6.1-inch AMOLED display, 256GB storage, and a powerful triple-camera system",
+                ImgPath = "samsung-galaxy-s23-5g-sm-s911-128gb-phantom-black.jpg"
             };
 
             BedFrame = new Product()
@@ -192,6 +194,7 @@ namespace IMS.Data.SeedDb
                 Description = "A modern queen-sized wooden bed frame with a minimalist design and storage drawers underneath.",
                 SupplierId = 2,
                 CategoryId = 2,
+                ImgPath = "malm-bed-frame-blue__1330503_pe9.jpg"
             };
             LaysClassicPotatoChips = new Product()
             {
@@ -202,6 +205,7 @@ namespace IMS.Data.SeedDb
                 Description = "Crispy and lightly salted potato chips in a large family-size bag. Perfect for sharing",
                 SupplierId = 3,
                 CategoryId = 1,
+                ImgPath = "Lay-s-Classic-Potato-Chips-8-oz.jpg"
             };
 
             Levis501OriginalJeans = new Product()
@@ -211,8 +215,9 @@ namespace IMS.Data.SeedDb
                 Price = 69.99,
                 Count = 200,
                 Description = "Classic straight-leg denim jeans made from durable cotton, available in various sizes and washes.",
-                SupplierId = 1,
+                SupplierId = 4,
                 CategoryId = 4,
+                ImgPath = "mens_501_original.jpg"
             };
 
             DoveDeepMoistureBodyWash = new Product()
@@ -222,8 +227,9 @@ namespace IMS.Data.SeedDb
                 Price = 6.49,
                 Count = 300,
                 Description = "Gentle body wash with a rich lather that nourishes and moisturizes the skin.",
-                SupplierId = 2,
-                CategoryId = 5
+                SupplierId = 5,
+                CategoryId = 5,
+                ImgPath = "dove-deep-moisture-body-wash.jpg"
             };
 
             BoschCordlessDrill = new Product()
@@ -233,8 +239,9 @@ namespace IMS.Data.SeedDb
                 Price = 119.99,
                 Count = 80,
                 Description = "Compact and lightweight cordless drill with two-speed settings, a rechargeable battery, and a carrying case.",
-                SupplierId = 3,
+                SupplierId = 6,
                 CategoryId = 6,
+                ImgPath = "Bosch_GSR_120-Li_Cordless_Drill_Driver___22210.jpg"
             };
 
             WilsonEvolutionIndoorBasketball = new Product()
@@ -244,8 +251,9 @@ namespace IMS.Data.SeedDb
                 Price = 59.99,
                 Count = 120,
                 Description = "High-quality indoor basketball with a soft feel, designed for competitive play and superior grip.",
-                SupplierId = 1,
+                SupplierId = 7,
                 CategoryId = 7,
+                ImgPath = "wilson-evolution-indoor-basketball.jpg"
             };
         }
 

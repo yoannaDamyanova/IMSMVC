@@ -4,6 +4,7 @@ using IMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IMS.Data.Migrations
 {
     [DbContext(typeof(IMSDbContext))]
-    partial class IMSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250127072053_fixSeedings")]
+    partial class fixSeedings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,7 +104,7 @@ namespace IMS.Data.Migrations
                         {
                             Id = "06e4a52b-0ee1-426f-b7a2-6b009a0c1f65",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "34a6a3a6-393c-455f-91b4-e9035f08d386",
+                            ConcurrencyStamp = "255ff357-e938-4fd4-b3eb-5f7a95e7bb1d",
                             Email = "employee@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Emilia",
@@ -109,9 +112,9 @@ namespace IMS.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "employee@gmail.com",
                             NormalizedUserName = "employee@gmail.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEyIsd0zOw9C5KNdnN6i3KqLInOPcWMJMjIgQMpYkvIXKi7PE6sJUu0xqtsIMsHQbg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHA65Jn9cMXfxBKUDlmGeCi8BLGXbWThFKjjmM4RQD8kG4AQDdZK7cA5EoTF7gntrw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c2f22489-ee9d-4fcf-9f6e-3e0e1b1bd302",
+                            SecurityStamp = "d60af456-c039-4c32-9941-6208ad889dd2",
                             TwoFactorEnabled = false,
                             UserName = "employee@gmail.com"
                         },
@@ -119,7 +122,7 @@ namespace IMS.Data.Migrations
                         {
                             Id = "69b38fdd-0aba-47f5-9f2b-6c7bb549d7ab",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b8bb1122-c89c-4ae5-ace9-9d4745483efe",
+                            ConcurrencyStamp = "ca23dbc4-5959-4bf7-9279-2cef664068c8",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Great",
@@ -127,9 +130,9 @@ namespace IMS.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJZKFOnyKOMUwe4afZ718LU8J9rtzPnRvT6dxD43IdX+BH4EkOpo8nUyht9H6shdOA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPYPxJsoWnhecTNrRgcRyPh7PS0myQUJTGvPIEYNRecE/hztG/7t7N0PAzjD7eirXQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "95f90eba-cb04-4dfc-8c00-896d6a4b4460",
+                            SecurityStamp = "2b41df33-b09f-440e-94dd-3747705a0793",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -328,7 +331,6 @@ namespace IMS.Data.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("ImgPath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsAvailbale")
@@ -360,7 +362,6 @@ namespace IMS.Data.Migrations
                             CategoryId = 2,
                             Count = 75,
                             Description = "A modern queen-sized wooden bed frame with a minimalist design and storage drawers underneath.",
-                            ImgPath = "malm-bed-frame-blue__1330503_pe9.jpg",
                             IsAvailbale = true,
                             Name = "IKEA MALM Bed Frame",
                             Price = 249.99000000000001,
@@ -372,7 +373,6 @@ namespace IMS.Data.Migrations
                             CategoryId = 3,
                             Count = 150,
                             Description = "A flagship smartphone with a 6.1-inch AMOLED display, 256GB storage, and a powerful triple-camera system",
-                            ImgPath = "samsung-galaxy-s23-5g-sm-s911-128gb-phantom-black.jpg",
                             IsAvailbale = true,
                             Name = "Samsung Galaxy S23",
                             Price = 999.99000000000001,
@@ -384,7 +384,6 @@ namespace IMS.Data.Migrations
                             CategoryId = 1,
                             Count = 500,
                             Description = "Crispy and lightly salted potato chips in a large family-size bag. Perfect for sharing",
-                            ImgPath = "Lay-s-Classic-Potato-Chips-8-oz.jpg",
                             IsAvailbale = true,
                             Name = "Lay's Classic Potato Chips (Party Size)",
                             Price = 4.9900000000000002,
@@ -396,7 +395,6 @@ namespace IMS.Data.Migrations
                             CategoryId = 4,
                             Count = 200,
                             Description = "Classic straight-leg denim jeans made from durable cotton, available in various sizes and washes.",
-                            ImgPath = "mens_501_original.jpg",
                             IsAvailbale = true,
                             Name = "Levi's 501 Original Jeans",
                             Price = 69.989999999999995,
@@ -408,7 +406,6 @@ namespace IMS.Data.Migrations
                             CategoryId = 7,
                             Count = 120,
                             Description = "High-quality indoor basketball with a soft feel, designed for competitive play and superior grip.",
-                            ImgPath = "wilson-evolution-indoor-basketball.jpg",
                             IsAvailbale = true,
                             Name = "Wilson Evolution Indoor Basketball",
                             Price = 59.990000000000002,
@@ -420,7 +417,6 @@ namespace IMS.Data.Migrations
                             CategoryId = 6,
                             Count = 80,
                             Description = "Compact and lightweight cordless drill with two-speed settings, a rechargeable battery, and a carrying case.",
-                            ImgPath = "Bosch_GSR_120-Li_Cordless_Drill_Driver___22210.jpg",
                             IsAvailbale = true,
                             Name = "Bosch Cordless Drill/Driver Kit (12V)",
                             Price = 119.98999999999999,
@@ -432,7 +428,6 @@ namespace IMS.Data.Migrations
                             CategoryId = 5,
                             Count = 300,
                             Description = "Gentle body wash with a rich lather that nourishes and moisturizes the skin.",
-                            ImgPath = "dove-deep-moisture-body-wash.jpg",
                             IsAvailbale = true,
                             Name = "Dove Deep Moisture Body Wash (16 oz)",
                             Price = 6.4900000000000002,

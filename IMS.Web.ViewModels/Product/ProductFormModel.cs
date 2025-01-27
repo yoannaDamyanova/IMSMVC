@@ -4,12 +4,13 @@ using static IMS.Common.ErrorMessageConstants;
 using static IMS.Common.EntityValidationConstants.Product;
 using IMS.Web.ViewModels.Category;
 using IMS.Web.ViewModels.Supplier;
+using Microsoft.AspNetCore.Http;
 
 namespace IMS.Web.ViewModels.Product
 {
     public class ProductFormModel : IProductModel
     {
-        public string Id { get; set; } = null!;
+        public string? Id { get; set; }
 
         [Required(ErrorMessage = RequiredMessage)]
         [StringLength(MaxTitleLength,
@@ -38,6 +39,10 @@ namespace IMS.Web.ViewModels.Product
         [Required(ErrorMessage = RequiredMessage)]
         [Display(Name = "Supplier")]
         public int SupplierId { get; set; }
+
+        [Required(ErrorMessage = RequiredMessage)]
+        [DataType(DataType.Upload)]
+        public IFormFile PhotoFileName { get; set; } = null!;
 
         public IEnumerable<CategoryServiceModel> Categories { get; set; } = new HashSet<CategoryServiceModel>();
 

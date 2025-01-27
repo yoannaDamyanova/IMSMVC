@@ -20,13 +20,13 @@
         <ul class="navbar-nav d-flex flex-row">
             @if (SignInManager.IsSignedIn(User))
             {
-                @if (await employeeService.ExistsByUserIdAsync(User.Id()) == false && User.IsAdmin() == false)
+                @* @if (await employeeService.ExistsByUserIdAsync(User.Id()) == false && User.IsAdmin() == false)
                 {
                     <li class="nav-item">
                         <a class="nav-link text-white btn btn-success rounded-pill px-4 py-2" asp-area="" asp-controller="Employee" asp-action="Become">Стани служител</a>
                     </li>
-                }
-                @if (await employeeService.ExistsByUserIdAsync(User.Id()))
+                } *@
+                @if (await employeeService.ExistsByUserIdAsync(User.Id()) && !User.IsAdmin())
                 {
                     <li class="nav-item">
                         <a class="nav-link text-white btn btn-outline-success rounded-pill px-4 py-2" asp-area="" asp-controller="Employee" asp-action="Office" asp-route-employeeId="@User.Id()">Моят Офис</a>

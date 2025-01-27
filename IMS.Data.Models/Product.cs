@@ -28,7 +28,8 @@ namespace IMS.Data.Models
         [Required]
         public int CategoryId { get; set; }
 
-        public string? ImgPath { get; set; }
+        [Required]
+        public string ImgPath { get; set; } = null!;
 
         [Required]
         public int SupplierId { get; set; }

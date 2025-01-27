@@ -44,5 +44,11 @@ namespace IMS.Services.Data
             return await repository.AllReadOnly<CommercialSite>()
                 .FirstOrDefaultAsync(cs => cs.Id == id);
         }
+
+        public async Task<IEnumerable<string>> AllCommercialSitesNamesAsync()
+        {
+            return await repository.AllReadOnly<CommercialSite>()
+                .Select(cs=>cs.Name).ToListAsync();
+        }
     }
 }

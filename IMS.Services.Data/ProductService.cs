@@ -4,8 +4,6 @@ using IMS.Services.Data.Contracts;
 using IMS.Web.ViewModels.Product;
 using IMS.Web.ViewModels.Category;
 using Microsoft.EntityFrameworkCore;
-using System.Globalization;
-using System.Text.RegularExpressions;
 using IMS.Web.ViewModels.Supplier;
 using IMS.Web.Infrastructure.Enumerations;
 
@@ -22,21 +20,39 @@ namespace IMS.Services.Data
             this.commercialsiteProductService = commercialsiteProductService;
         }
 
-        public async Task<Guid> AddProductAsync(ProductFormModel model)
+        public async Task AddProductAsync(ProductFormModel model)
         {
-            Product product = new Product()
+            if (model.PhotoFileName != null && model.PhotoFileName.Length > 0)
             {
-                Name = model.Name,
-                Description = model.Description,
-                Price = model.Price,
-                Count = model.Count,
-                CategoryId = model.CategoryId,
-                SupplierId = model.SupplierId,
-            };
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(model.PhotoFileName.FileName);
 
-            await repository.AddAsync(product);
-            await repository.SaveChangesAsync();
-            return product.Id;
+                var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+
+                if (!Directory.Exists(uploadFolder))
+                {
+                    Directory.CreateDirectory(uploadFolder);
+                }
+
+                var filePath = Path.Combine(uploadFolder, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await model.PhotoFileName.CopyToAsync(stream);
+                }
+                Product product = new Product()
+                {
+                    Name = model.Name,
+                    Description = model.Description,
+                    Price = model.Price,
+                    Count = model.Count,
+                    CategoryId = model.CategoryId,
+                    SupplierId = model.SupplierId,
+                    ImgPath = fileName
+                };
+
+                await repository.AddAsync(product);
+                await repository.SaveChangesAsync();
+            }
         }
 
         public async Task<IEnumerable<CategoryServiceModel>> AllCategoriesAsync()
@@ -176,7 +192,7 @@ namespace IMS.Services.Data
         }
 
         public async Task<ProductQueryServiceModel> AllAsync(string? category = null,
-            string? status = null,
+            string? supplier = null,
             string? searchTerm = null,
             ProductSorting sorting = ProductSorting.PriceAscending,
             int currentPage = 1,
@@ -191,6 +207,11 @@ namespace IMS.Services.Data
             if (category != null)
             {
                 classesToShow = classesToShow.Where(c => c.Category.Name == category).ToList();
+            }
+
+            if (supplier != null)
+            {
+                classesToShow = classesToShow.Where(c => c.Supplier.Name == supplier).ToList();
             }
 
             if (searchTerm != null)
@@ -220,6 +241,7 @@ namespace IMS.Services.Data
                     Name = c.Name,
                     Count = c.Count,
                     Price = c.Price,
+                    PhotoFileName = c.ImgPath
                 }).ToList();
 
             int totalProducts = classesToShow.Count;
@@ -248,10 +270,23 @@ namespace IMS.Services.Data
             if (await commercialsiteProductService.ExistsById(model.Id))
             {
                 var siteProduct = await commercialsiteProductService.GetById(model.Id);
+                if (model.EmployeeSiteId == siteProduct.CommercialSiteId)
+                {
+                    siteProduct.ProductCount += model.RequestedCount;
+                }
 
-                siteProduct.ProductCount += model.RequestedCount;
+                else
+                {
+                    CommercialSiteProduct csp = new()
+                    {
+                        CommercialSiteId = model.EmployeeSiteId,
+                        ProductId = product.Id,
+                        ProductCount = model.RequestedCount,
+                    };
+                    await repository.AddAsync(csp);
+                }
             }
-            else 
+            else
             {
                 CommercialSiteProduct csp = new()
                 {

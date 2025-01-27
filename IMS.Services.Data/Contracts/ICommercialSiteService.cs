@@ -15,5 +15,7 @@ namespace IMS.Services.Data.Contracts
         Task<bool> ExistsAsync(int id);
 
         Task<CommercialSite> GetByIdAsync(int id);
+
+        Task<IEnumerable<string>> AllCommercialSitesNamesAsync();
     }
 }

@@ -5,6 +5,7 @@
 <div class="col-md-4">
     <div class="card mb-4 shadow-sm">
         <div class="card-body">
+            <img src="@Url.Content($"~/images/{Model.PhotoFileName}")" class="card-img-top" alt="@Model.Name" style="width: 100%; height: 250px; object-fit: cover;">
             <!-- Class Title -->
             <h5 class="card-title text-center">@Model.Name</h5>
             <p class="text-center text-muted">@Model.Price</p>
@@ -17,7 +18,7 @@
             </div>
 
             <!-- Action Buttons for Authenticated Users -->
-           @if (User?.Identity?.IsAuthenticated == true)
+            @if (User?.Identity?.IsAuthenticated == true)
             {
                 <div class="d-grid gap-2">
                     <a asp-controller="Product" asp-action="Details" asp-route-productId="@Model.Id" class="btn btn-outline-primary">Детайли</a>
@@ -27,7 +28,7 @@
                         <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-productId="@Model.Id" class="btn btn-warning">Редактирай</a>
                         <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-productId="@Model.Id" class="btn btn-danger">Изтрий</a>
                     }
-                    @if (await employeeService.ExistsByUserIdAsync(User.Id()))
+                    @if (await employeeService.ExistsByUserIdAsync(User.Id()) && User.IsAdmin() == false)
                     {
                         <a asp-controller="Product" asp-action="RequestProduct" asp-route-productId="@Model.Id" class="btn btn-outline-primary">Направи заявка</a>
                     }

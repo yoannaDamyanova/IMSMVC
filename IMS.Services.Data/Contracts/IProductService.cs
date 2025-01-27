@@ -8,7 +8,7 @@ namespace IMS.Services.Data.Contracts
 {
     public interface IProductService
     {
-        Task<Guid> AddProductAsync(ProductFormModel model);
+        Task AddProductAsync(ProductFormModel model);
 
         Task<IEnumerable<CategoryServiceModel>> AllCategoriesAsync();
         Task<IEnumerable<SupplierServiceModel>> AllSuppliersAsync();
@@ -34,7 +34,7 @@ namespace IMS.Services.Data.Contracts
         Task<IEnumerable<string>> AllSuppliersNamesAsync();
 
         Task<ProductQueryServiceModel> AllAsync(string? category = null,
-            string? status = null,
+            string? supplier = null,
             string? searchTerm = null,
             ProductSorting sorting = ProductSorting.PriceAscending,
             int currentPage = 1,

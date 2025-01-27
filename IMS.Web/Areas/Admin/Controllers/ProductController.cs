@@ -44,7 +44,7 @@ namespace IMS.Web.Areas.Admin.Controllers
                 return View(model);
             }
 
-            Guid productId = await productService.AddProductAsync(model);
+            await productService.AddProductAsync(model);
 
             return RedirectToAction("DashBoard", "Home");
         }

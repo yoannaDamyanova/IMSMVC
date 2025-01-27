@@ -19,11 +19,11 @@ namespace IMS.Web.Attributes
                 context.Result = new StatusCodeResult(StatusCodes.Status500InternalServerError);
             }
 
-            if (employeeService != null
-                && employeeService.ExistsByUserIdAsync(context.HttpContext.User.Id()).Result == false)
-            {
-                context.Result = new RedirectToActionResult(nameof(EmployeeController.Become), "Instructor", null);
-            }
+            //if (employeeService != null
+            //    && employeeService.ExistsByUserIdAsync(context.HttpContext.User.Id()).Result == false)
+            //{
+            //    context.Result = new RedirectToActionResult(nameof(EmployeeController.Become), "Instructor", null);
+            //}
         }
     }
 }
