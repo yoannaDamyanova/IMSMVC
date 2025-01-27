@@ -4,88 +4,32 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Best Fitness Class Booking</title>
+    <title>@ViewData["Title"] - Stockly</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <style>
-        /* Custom CSS for color scheme */
-        body {
-            background-color: white;
-            color: black;
-        }
-
-        header {
-            background-color: #198754; /* Custom green shade */
-            color: white;
-        }
-
-            header .navbar {
-                padding: 1rem;
-            }
-
-            header .navbar-brand {
-                font-weight: bold;
-                color: white;
-            }
-
-                header .navbar-brand:hover {
-                    color: #145c32; /* Darker green for hover effect */
-                }
-
-        footer {
-            background-color: #198754; /* Custom green shade */
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .btn-custom {
-            background-color: #198754; /* Custom green shade */
-            color: white;
-            border: none;
-        }
-
-            .btn-custom:hover {
-                background-color: #145c32; /* Darker green on hover */
-            }
-
-        .btn-link-custom {
-            color: #198754; /* Green color for links */
-        }
-
-            .btn-link-custom:hover {
-                color: #145c32; /* Darker green on hover */
-            }
-
-        .navbar-toggler {
-            border-color: #198754; /* Matching green border for toggle button */
-        }
-
-        .navbar-toggler-icon {
-            background-color: #198754; /* Matching green background for toggle icon */
-        }
-
-        footer span {
-            font-style: italic;
-        }
-    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-transparent border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Stockly</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container position-relative d-flex align-items-center justify-content-between">
+
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center me-auto me-xl-0">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <!-- <img src="assets/img/logo.png" alt=""> -->
+                <h1 class="sitename">Stockly</h1>
+                <span>.</span>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
                     @await Component.InvokeAsync(nameof(AdminMenuComponent))
                     <partial name="_AdminPartial" />
-                </div>
-            </div>
-        </nav>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+        </div>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

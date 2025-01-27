@@ -8,59 +8,27 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <style>
-        /* Custom CSS for color scheme */
-        body {
-            background-color: white;
-            color: black;
-        }
-        header {
-            background-color: #198754; /* Custom green shade */
-            color: white;
-        }
-        header .navbar {
-            padding: 1rem;
-        }
-        header .navbar-brand {
-            font-weight: bold;
-            color: white;
-        }
-        header .navbar-brand:hover {
-            color: #145c32; /* Darker green for hover effect */
-        }
-        footer {
-            background-color: #198754; /* Custom green shade */
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        .btn-custom {
-            background-color: #198754; /* Custom green shade */
-            color: white;
-            border: none;
-        }
-        .btn-custom:hover {
-            background-color: #145c32; /* Darker green on hover */
-        }
-        .btn-link-custom {
-            color: #198754; /* Green color for links */
-        }
-        .btn-link-custom:hover {
-            color: #145c32; /* Darker green on hover */
-        }
-    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-light bg-transparent border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Stockly</a>
-                <div class="d-flex">
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container position-relative d-flex align-items-center justify-content-between">
+
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center me-auto me-xl-0">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <!-- <img src="assets/img/logo.png" alt=""> -->
+                <h1 class="sitename">Stockly</h1>
+                <span>.</span>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
                     @await Component.InvokeAsync(nameof(MainMenuComponent))
                     <partial name="_LoginPartial" />
-                </div>
-            </div>
-        </nav>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
