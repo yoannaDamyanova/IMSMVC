@@ -4,113 +4,121 @@
 
 @{
     ViewBag.Title = Localizer["Продукти"];
-}
-
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr />
-
-<!-- Search Form -->
-<form method="get">
-    <div class="row">
-        <!-- Category Filter -->
-        <div class="col-md-3">
-            <div class="form-group">
-                <label asp-for="Category">@Localizer["Категория"]</label>
-                <select asp-for="Category" class="form-control">
-                    <option value="">@Localizer["Всички"]</option>
-                    @foreach (var category in Model.Categories)
-                    {
-                        <option value="@category">@category</option>
-                    }
-                </select>
-            </div>
-        </div>
-
-        <!-- Status Filter -->
-        <div class="col-md-3">
-            <div class="form-group">
-                <label asp-for="Supplier">@Localizer["Производиел"]</label>
-                <select asp-for="Supplier" class="form-control">
-                    <option value="">@Localizer["Всички"]</option>
-                    @foreach (var supplier in Model.Suppliers)
-                    {
-                        <option value="@supplier">@supplier</option>
-                    }
-                </select>
-            </div>
-        </div>
-
-        <!-- Search Term Input -->
-        <div class="col-md-3">
-            <div class="form-group">
-                <label asp-for="SearchTerm">@Localizer["Търсене"]</label>
-                <input asp-for="SearchTerm" class="form-control"/>
-            </div>
-        </div>
-
-        <!-- Sorting Filter -->
-        <div class="col-md-3">
-            <div class="form-group">
-                <label asp-for="Sorting">@Localizer["Сортиране по:"]</label>
-                <select asp-for="Sorting" class="form-control">
-                    <option value="1">@Localizer["Най-ниска цена"]</option>
-                    <option value="2">@Localizer["Най-висока цена"]</option>
-                    <option value="3">@Localizer["Най-малка наличност"]</option>
-                    <option value="4">@Localizer["Най-голяма наличност"]</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Submit Button -->
-        <div class="col-md-12 mt-4 text-center">
-            <button type="submit" class="btn btn-success btn-lg fw-bold text-white rounded-pill px-5 py-3 shadow-lg">@Localizer["Search"]</button>
-        </div>
-    </div>
-</form>
-
-<hr />
-
-@{
     var previousPage = Model.CurrentPage - 1;
     previousPage = previousPage < 1 ? 1 : previousPage;
-
     var maxPage = Math.Ceiling((double)Model.TotalProductsCount / Model.ProductsPerPage);
 }
 
-<!-- Pagination Controls -->
-<div class="row mb-5">
-    <!-- Previous Page Button -->
-    <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
-        <a class="btn btn-success btn-lg fw-bold text-white rounded-pill px-5 py-3 shadow-lg @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
-           asp-controller="Product"
-           asp-action="All"
-           asp-route-currentPage="@previousPage"
-           asp-route-category="@Model.Category"
-           asp-route-searchTerm="@Model.SearchTerm"
-           asp-route-sorting="@((int)Model.Sorting)"><<</a>
+<section id="menu" class="menu section">
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>@ViewBag.Title</h2>
+        <p><span>@Localizer["Разгледайте"]</span> <span class="description-title">@Localizer["Наличните продукти"]</span></p>
+    </div><!-- End Section Title -->
+    <!-- Search Form -->
+    <div class="container">
+        <form method="get">
+        <div class="row">
+            <!-- Category Filter -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Category">@Localizer["Категория"]</label>
+                    <select asp-for="Category" class="form-control">
+                        <option value="">@Localizer["Всички"]</option>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <option value="@category">@category</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <!-- Status Filter -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Supplier">@Localizer["Производиел"]</label>
+                    <select asp-for="Supplier" class="form-control">
+                        <option value="">@Localizer["Всички"]</option>
+                        @foreach (var supplier in Model.Suppliers)
+                        {
+                            <option value="@supplier">@supplier</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <!-- Search Term Input -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="SearchTerm">@Localizer["Търсене"]</label>
+                    <input asp-for="SearchTerm" class="form-control" />
+                </div>
+            </div>
+
+            <!-- Sorting Filter -->
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Sorting">@Localizer["Сортиране по:"]</label>
+                    <select asp-for="Sorting" class="form-control">
+                        <option value="1">@Localizer["Най-ниска цена"]</option>
+                        <option value="2">@Localizer["Най-висока цена"]</option>
+                        <option value="3">@Localizer["Най-малка наличност"]</option>
+                        <option value="4">@Localizer["Най-голяма наличност"]</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="col-md-12 mt-4 text-center">
+                    <button type="submit" class="btn btn-get-started">@Localizer["Търсене"]</button>
+            </div>
+        </div>
+        </form>
+
+        <hr />
+
+        <!-- Pagination Controls -->
+        <div class="row mb-5">
+            <!-- Previous Page Button -->
+            <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
+                <a class="btn btn-get-started @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
+                   asp-controller="Product"
+                   asp-action="All"
+                   asp-route-currentPage="@previousPage"
+                   asp-route-category="@Model.Category"
+                   asp-route-searchTerm="@Model.SearchTerm"
+                   asp-route-sorting="@((int)Model.Sorting)"><<</a>
+            </div>
+
+            <!-- Next Page Button -->
+            <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-get-started @(Model.CurrentPage == maxPage || !Model.Products.Any() ? "disabled" : string.Empty)"
+                   asp-controller="Product"
+                   asp-action="All"
+                   asp-route-currentPage="@(Model.CurrentPage + 1)"
+                   asp-route-category="@Model.Category"
+                   asp-route-searchTerm="@Model.SearchTerm"
+                   asp-route-sorting="@((int)Model.Sorting)">>></a>
+            </div>
+        </div>
+
+        @if (!Model.Products.Any())
+        {
+            <h2 class="text-center">@Localizer["Няма намерени продукти по дадените критерии."]</h2>
+        }
+
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+            <div class="tab-pane fade active show" id="menu-starters">
+                <div class="row gy-5">
+                    @foreach (var product in Model.Products)
+                    {
+                        <div class="col-lg-4 menu-item">
+                            <partial name="_ProductPartial" model="@product" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!-- Next Page Button -->
-    <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-success btn-lg fw-bold text-white rounded-pill px-5 py-3 shadow-lg @(Model.CurrentPage == maxPage || !Model.Products.Any() ? "disabled" : string.Empty)"
-           asp-controller="Product"
-           asp-action="All"
-           asp-route-currentPage="@(Model.CurrentPage + 1)"
-           asp-route-category="@Model.Category"
-           asp-route-searchTerm="@Model.SearchTerm"
-           asp-route-sorting="@((int)Model.Sorting)">>></a>
-    </div>
-</div>
-
-@if (!Model.Products.Any())
-{
-    <h2 class="text-center">No fitness classes found by the given criteria!</h2>
-}
-
-<!-- Display Fitness Classes -->
-<div class="row">
-    @foreach (var product in Model.Products)
-    {
-        <partial name="_ProductPartial" model="@product" />
-    }
-</div>
+    <
+</section>

@@ -1,37 +1,23 @@
-﻿<!DOCTYPE
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Stockly</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-</head>
-<body>
-    @{
-        ViewData["Title"] = "Начална страница";
-    }
-    <!-- Hero Section -->
-    <section id="hero" class="hero section light-background">
+﻿@{
+    ViewData["Title"] = "Начална страница";
+}
+<!-- Hero Section -->
+<section id="hero" class="hero section light-background">
 
-        <div class="container">
-            <div class="row gy-4 justify-content-center justify-content-lg-between">
-                <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center">
+    <div class="container">
+        <div class="row gy-4 justify-content-center justify-content-lg-between">
+            <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center">
 
-                    <h1 data-aos="fade-up">Добре дошли в<br>Stockly</h1>
-                    <p data-aos="fade-up" data-aos-delay="100">Най-добрата система за управление на складова наличност!</p>
-                    <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-                        <a asp-action="All" asp-controller="Product" class="btn-get-started">Разгледай продуктите</a>
-                    </div>
-                </div>
-                <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-                    <img src="~/images/hero/hero-banner.png" class="img-fluid animated" alt="">
+                <h1 data-aos="fade-up">Добре дошли в<br><span>Stockly</span></h1>
+                <p data-aos="fade-up" data-aos-delay="100">Най-добрата система за управление на складова наличност!</p>
+                <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+                    <a asp-action="All" asp-controller="Product" class="btn-get-started">Разгледай продуктите</a>
                 </div>
             </div>
+            <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+                <img src="~/images/hero/hero-banner.png" class="img-fluid animated" alt="">
+            </div>
         </div>
+    </div>
 
-    </section><!-- /Hero Section -->
-</body>
-</html>
- 
+</section><!-- /Hero Section -->
