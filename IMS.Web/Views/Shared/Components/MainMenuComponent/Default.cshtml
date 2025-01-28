@@ -1,22 +1,12 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-</head>
-<body>
-    <li><a asp-area="" asp-controller="Home" asp-action="Index" class="active">Начало<br></a></li>
-    <li><a asp-area="" asp-controller="Product" asp-action="All">Продукти</a></li>
-    <li><a asp-area="" asp-controller="CommercialSite" asp-action="All">Търговски обекти</a></li>
-    @if (User?.Identity?.IsAuthenticated ?? false)
+﻿
+<li><a asp-area="" asp-controller="Home" asp-action="Index">Начало<br></a></li>
+<li><a asp-area="" asp-controller="Product" asp-action="All">Продукти</a></li>
+<li><a asp-area="" asp-controller="CommercialSite" asp-action="All">Търговски обекти</a></li>
+@if (User?.Identity?.IsAuthenticated ?? false)
+{
+    if (User.IsAdmin())
     {
-        if (User.IsAdmin())
-        {
-            <li><a asp-area="Admin" asp-controller="Product" asp-action="Add">Добави продукт</a></li>
-            <li><a asp-area="Admin" asp-controller="Home" asp-action="DashBoard">Табло за управление</a></li>
-        }
+        <li><a asp-area="Admin" asp-controller="Product" asp-action="Add">Добави продукт</a></li>
+        <li><a asp-area="Admin" asp-controller="Home" asp-action="DashBoard">Табло за управление</a></li>
     }
-</body>
+}

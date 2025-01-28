@@ -2,50 +2,44 @@
 @model RegisterModel
 
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Регистрация";
 }
 
 <h2 class="text-center mb-4">@ViewData["Title"]</h2>
-<hr />
 
 <!-- Registration Form -->
-<div class="row justify-content-center">
+<div class="row justify-content-center mb-4">
     <div class="col-md-6 col-lg-4">
         <section class="card shadow-lg p-4">
             <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
                 <div class="form-group mb-4">
-                    <label for="Email" class="form-label">Email</label>
-                    <input asp-for="Input.Email" id="Email" class="form-control" autocomplete="username" aria-required="true" />
+                    <input asp-for="Input.Email" id="Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Имейл"/>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
 
                 <div class="form-group mb-4">
-                    <label for="Password" class="form-label">Password</label>
-                    <input asp-for="Input.Password" id="Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                    <input asp-for="Input.Password" id="Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Парола"/>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
 
                 <div class="form-group mb-4">
-                    <label for="ConfirmPassword" class="form-label">Confirm Password</label>
-                    <input asp-for="Input.ConfirmPassword" id="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                    <input asp-for="Input.ConfirmPassword" id="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Подвърди паролата"/>
                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 </div>
 
                 <div class="form-group mb-4">
-                    <label for="FirstName" class="form-label">First Name</label>
-                    <input asp-for="Input.FirstName" id="FirstName" class="form-control" autocomplete="first-name" aria-required="true" />
+                    <input asp-for="Input.FirstName" id="FirstName" class="form-control" autocomplete="first-name" aria-required="true" placeholder="Име"/>
                     <span asp-validation-for="Input.FirstName" class="text-danger"></span>
                 </div>
 
                 <div class="form-group mb-4">
-                    <label for="LastName" class="form-label">Last Name</label>
-                    <input asp-for="Input.LastName" id="LastName" class="form-control" autocomplete="last-name" aria-required="true" />
+                    <input asp-for="Input.LastName" id="LastName" class="form-control" autocomplete="last-name" aria-required="true" placeholder="Фамилия" />
                     <span asp-validation-for="Input.LastName" class="text-danger"></span>
                 </div>
 
                 <div class="text-center mb-4">
-                    <button id="registerSubmit" type="submit" class="btn btn-success btn-lg fw-bold text-white rounded-pill px-5 py-3 shadow-lg w-100">
-                        Register
+                    <button id="registerSubmit" type="submit" class="btn btn-getstarted">
+                        Регистрация
                     </button>
                 </div>
             </form>

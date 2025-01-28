@@ -2,27 +2,29 @@
 @inject IProductService productService
 @inject IEmployeeService employeeService
 
-<a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="@Url.Content($"~/images/{Model.PhotoFileName}")" class="menu-img img-fluid" alt="@Model.Name"></a>
-<h4>@Model.Name</h4>
-<p class="price">
-    @Model.Price лв.
-</p>
-<p class="ingridients">
-    Налични: @Model.Count
-</p>
+<div class="row flex-column">
+    <a asp-controller="Product" asp-action="Details" asp-route-productId="@Model.Id" class="glightbox"><img src="@Url.Content($"~/images/{Model.PhotoFileName}")" class="menu-img img-fluid" alt="@Model.Name"></a>
+    <a asp-controller="Product" asp-action="Details" asp-route-productId="@Model.Id"> <h4>@Model.Name</h4></a>
+    <p class="price">
+        @Model.Price лв.
+    </p>
+    <p class="ingridients">
+        Налични: @Model.Count бр.
+    </p>
+</div>
+
 @if (User?.Identity?.IsAuthenticated == true)
 {
-    <div class="d-grid gap-2">
-        <a asp-controller="Product" asp-action="Details" asp-route-productId="@Model.Id" class="btn btn-outline-primary">Детайли</a>
+    <div class="row gap-3 flex-wrap px-3">
 
         @if (User.IsAdmin())
         {
-            <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-productId="@Model.Id" class="btn btn-warning">Редактирай</a>
-            <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-productId="@Model.Id" class="btn btn-danger">Изтрий</a>
+            <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-productId="@Model.Id" class="btn more-btn col-5">Редактирай</a>
+            <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-productId="@Model.Id" class="btn more-btn col-5">Изтрий</a>
         }
         @if (await employeeService.ExistsByUserIdAsync(User.Id()) && User.IsAdmin() == false)
         {
-            <a asp-controller="Product" asp-action="RequestProduct" asp-route-productId="@Model.Id" class="btn btn-outline-primary">Направи заявка</a>
+            <a asp-controller="Product" asp-action="RequestProduct" asp-route-productId="@Model.Id" class="btn more-btn col-12">Направи заявка</a>
         }
     </div>
 }

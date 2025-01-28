@@ -104,13 +104,13 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/toastr/toastr.min.js"></script>
-    <script src="~/lib/bootstrap/dist/css/aos/aos.js"></script>
+    <script src="~/lib/bootstrap/dist/css/aos/aos.js" asp-append-version="true"></script>
     <script>
     AOS.init({
         duration: 1200,  // Duration of the animation in ms
     });
 </script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -55,18 +55,5 @@
         });
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-
-    @if (TempData[UserMessageSuccess] != null)
-    {
-        <script defer>
-            message.showSuccess('@TempData[UserMessageSuccess]');
-        </script>
-    }
-    @if (TempData[UserMessageError] != null)
-    {
-        <script defer>
-            message.showError('@TempData[UserMessageError]');
-        </script>
-    }
 </body>
 </html>
