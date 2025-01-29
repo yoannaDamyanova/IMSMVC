@@ -4,36 +4,51 @@
 @{
     ViewBag.Title = "Заяви продукт";
 }
-
-<h2>Product Request</h2>
-
 @{
     int employeeId = await employeeService.GetEmployeeIdByUserId(User.Id());
 
     var employee = await employeeService.GetByIdAsync(employeeId);
 }
 
-<div>
-    <h3>@Model.Name</h3>
-    <p><strong>Description:</strong> @Model.Description</p>
-    <p><strong>Price:</strong> @Model.Price.ToString() лв.</p>
-    <p><strong>Available Count:</strong> @Model.Count</p>
-    <p><strong>Supplier:</strong> @Model.SupplierName</p>
-</div>
+<section id="book-a-table" class="book-a-table section">
 
-@using (Html.BeginForm("RequestProduct", "Product", FormMethod.Post))
-{
-    @Html.HiddenFor(m => m.Id)
-    @Html.HiddenFor(m => m.Count)
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>@ViewData["Title"]</h2>
+        <p><span>Направете</span> <span class="description-title">заявка<br></span></p>
+    </div><!-- End Section Title -->
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.RequestedCount)
-        @Html.TextBoxFor(m => m.RequestedCount, new { @class = "form-control", type = "number", min = "1", max = Model.Count })
-        @Html.ValidationMessageFor(m => m.RequestedCount, null, new { @class = "text-danger" })
+    <div class="container">
+
+        <div class="row g-0" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="col-lg-4 reservation-img" style="background-image: url('@Url.Content("/images/" + Model.PhotoName)');"></div>
+
+            <div class="col-lg-8 d-flex flex-column reservation-form-bg p-2" data-aos="fade-up" data-aos-delay="200">
+                <h1>@Model.Name</h1>
+                <p><strong>Описание:</strong> @Model.Description</p>
+                <p><strong>Цена:</strong> @Model.Price.ToString() лв.</p>
+                <p><strong>Налични:</strong> @Model.Count бр.</p>
+                <p><strong>Производител:</strong> @Model.SupplierName</p>
+                <form asp-action="RequestProduct" asp-controller="Product" method="post" role="form">
+                    <div class="row gy-4 j">
+                        <div class="col-lg-4 col-md-6">
+                            <input asp-for="RequestedCount" class="form-control" type="number" min="1" max="@Model.Count" />
+                            <span asp-validation-for="RequestedCount" class="text-danger"></span>
+                        </div>
+                        <div  class="col-lg-4 col-md-6">
+                            <button type="submit" class="btn btn-getstarted w-100">Изпрати заявката</button>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <a asp-action="All" asp-controller="Product" class="btn btn-getstarted w-100">Назад</a>
+                        </div>       
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
     </div>
 
-    <input type="hidden" asp-for="EmployeeSiteId" value="@employee.CommercialSiteId"/>
-
-    <button type="submit" class="btn btn-primary">Изпрати заявката</button>
-    <a asp-action="All" asp-controller="Product" class="btn btn-secondary">Назад</a>
-}
+</section>

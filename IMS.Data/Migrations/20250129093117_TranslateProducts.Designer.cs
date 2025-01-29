@@ -4,6 +4,7 @@ using IMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IMS.Data.Migrations
 {
     [DbContext(typeof(IMSDbContext))]
-    partial class IMSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250129093117_TranslateProducts")]
+    partial class TranslateProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,7 +104,7 @@ namespace IMS.Data.Migrations
                         {
                             Id = "06e4a52b-0ee1-426f-b7a2-6b009a0c1f65",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cc47fb2e-4d56-44cd-a4ea-7f690826aa6d",
+                            ConcurrencyStamp = "fb4f0e39-4f66-46fa-85e0-ed2d577d51f2",
                             Email = "employee@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Emilia",
@@ -109,9 +112,9 @@ namespace IMS.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "employee@gmail.com",
                             NormalizedUserName = "employee@gmail.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHp6SOEGCHHylueiOPasG66ezqJBe8Oqc4JZ1MNtL6+F83KoDyOU68HmdxUvzqtuGw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPICCJBPerYOS/Eh7LqRgdRjYrvsC7v6NuXZWLVU1jMO+9CqTnKn8L4ex6/QH1zu0w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8ac0167f-8428-45b5-9c4e-efc3a6da0abb",
+                            SecurityStamp = "333b37b0-84e1-4d21-8bed-05055466bd36",
                             TwoFactorEnabled = false,
                             UserName = "employee@gmail.com"
                         },
@@ -119,7 +122,7 @@ namespace IMS.Data.Migrations
                         {
                             Id = "69b38fdd-0aba-47f5-9f2b-6c7bb549d7ab",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6e2f6984-0e0c-4864-9d65-e5f148a9bfbb",
+                            ConcurrencyStamp = "ccecb44f-f648-44cf-a5ae-4f8efc1c8ec4",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Great",
@@ -127,9 +130,9 @@ namespace IMS.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHXMGhwhiPkTS9gX7GoUQjQr4xEVhDNmJnBw53iWzbDbzzunWhtbHugxPvvRdcuOkA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECpZw34BWrDSQh9arBCG7wk+/bDNQXAa2ECTnMNrDKE+coSMn0WkbeW4XjSNNRcHTw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ac13939c-ae30-42d1-8080-87e8cb1f2b3a",
+                            SecurityStamp = "982d72d4-2290-4bc4-82db-621bafe7ee33",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -434,7 +437,7 @@ namespace IMS.Data.Migrations
                             Description = "Dove Deep Moisture Nourishing Body Wash е създаден с мисъл за вашата кожа, за да осигури дълбока хидратация и трайно подхранване. С уникалната си формула, обогатена с Moisture Renew Blend, този душ-гел комбинира естествени подхранващи вещества и овлажнители на растителна основа, които проникват дълбоко в горните слоеве на кожата, за да я поддържат мека и гладка.",
                             ImgPath = "dove-deep-moisture-body-wash.jpg",
                             IsAvailbale = true,
-                            Name = "Dove Deep Moisture Хидратиращ душгел 1L",
+                            Name = "Dove Deep Moisture Nourishing Body Wash 1L",
                             Price = 6.4900000000000002,
                             SupplierId = 5
                         });

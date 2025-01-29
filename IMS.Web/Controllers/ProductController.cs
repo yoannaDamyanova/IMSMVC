@@ -79,6 +79,7 @@ namespace IMS.Web.Controllers
                 SupplierName = supplier.Name,
                 Description = product.Description,
                 Count = product.Count,
+                PhotoName = product.ImgPath
             };
 
             return View(model);

@@ -26,5 +26,8 @@ namespace IMS.Web.ViewModels.Product
         public int RequestedCount { get; set; }
 
         public int EmployeeSiteId { get; set; }
+
+        [Required]
+        public string PhotoName { get; set; } = string.Empty;
     }
 }

@@ -131,43 +131,43 @@ namespace IMS.Data.SeedDb
             FoodAndBeverages = new Category()
             {
                 Id = 1,
-                Name = "Food and Beverages"
+                Name = "Храни и напитки"
             };
 
             FurnitureAndHomeGoods = new Category()
             {
                 Id = 2,
-                Name = "Furniture and Home Goods"
+                Name = "Мебели и интериор"
             };
 
             ElectronicsAndAppliences = new Category()
             {
                 Id = 3,
-                Name = "Electronics and Appliances"
+                Name = "Електроуреди/Бяла и черна техника"
             };
 
             ClothingAndAccessories = new Category()
             {
                 Id = 4,
-                Name = "Clothing and Accessories"
+                Name = "Дрехи и аксесоари"
             };
 
             HealthAndPersonalCare = new Category()
             {
                 Id = 5,
-                Name = "Health and Personal Care"
+                Name = "Здраве и лична грижа"
             };
 
             AutomotiveAndTools = new Category()
             {
                 Id = 6,
-                Name = "Automotive and Tools"
+                Name = "Инструменти и железария"
             };
 
             SportsAndOutdoorEquipment = new Category()
             {
                 Id = 7,
-                Name = "Sports and Outdoor Equipment"
+                Name = "Спорт и оборудване за открито"
             };
         }
 
@@ -181,17 +181,17 @@ namespace IMS.Data.SeedDb
                 Count = 150,
                 SupplierId = 1,
                 CategoryId = 3,
-                Description = "A flagship smartphone with a 6.1-inch AMOLED display, 256GB storage, and a powerful triple-camera system",
+                Description = "Създаден с мисъл за планетата.Грижата за природата започва от кутията на смартфона ти. Изработен с рециклирано стъкло и PET фолио и оцветен с естествени багрила, всеки смартфон е сложен в кутия, направена от рециклирана хартия и защитно фолио на хартиена основа.",
                 ImgPath = "samsung-galaxy-s23-5g-sm-s911-128gb-phantom-black.jpg"
             };
 
             BedFrame = new Product()
             {
                 Id = new Guid("2b966829-79b6-4eff-8e6d-51e147f966ea"),
-                Name = "IKEA MALM Bed Frame",
+                Name = "IKEA MALM легло",
                 Price = 249.99,
                 Count = 75,
-                Description = "A modern queen-sized wooden bed frame with a minimalist design and storage drawers underneath.",
+                Description = "Изчистен дизайн с фурнир от масивна дървесина. Можете да поставите леглото на разстояние от останалите мебели или с горната табла до стената. Ако имате нужда от допълнително пространство за завивки, добавете MALM кутиите за съхранение на колелца.",
                 SupplierId = 2,
                 CategoryId = 2,
                 ImgPath = "malm-bed-frame-blue__1330503_pe9.jpg"
@@ -199,10 +199,10 @@ namespace IMS.Data.SeedDb
             LaysClassicPotatoChips = new Product()
             {
                 Id = new Guid("35970b4c-ac84-4e23-bf98-ac1785d736da"),
-                Name = "Lay's Classic Potato Chips (Party Size)",
+                Name = "Lay's Класически картофени чипсове (Парти размер)",
                 Price = 4.99,
                 Count = 500,
-                Description = "Crispy and lightly salted potato chips in a large family-size bag. Perfect for sharing",
+                Description = "Хрупкави картофени чипсове с леко осоляване в голям семеен пакет. Перфектни за споделяне.",
                 SupplierId = 3,
                 CategoryId = 1,
                 ImgPath = "Lay-s-Classic-Potato-Chips-8-oz.jpg"
@@ -211,10 +211,10 @@ namespace IMS.Data.SeedDb
             Levis501OriginalJeans = new Product()
             {
                 Id = new Guid("4e861aa5-5553-456e-bd6f-4312ffc05563"),
-                Name = "Levi's 501 Original Jeans",
+                Name = "LEVI'S ® Слим фит Дънки '501' в Светлосиньо",
                 Price = 69.99,
                 Count = 200,
-                Description = "Classic straight-leg denim jeans made from durable cotton, available in various sizes and washes.",
+                Description = "Класически прави дънки, изработени от издръжлив памук, налични в различни размери и измивания.",
                 SupplierId = 4,
                 CategoryId = 4,
                 ImgPath = "mens_501_original.jpg"
@@ -223,10 +223,10 @@ namespace IMS.Data.SeedDb
             DoveDeepMoistureBodyWash = new Product()
             {
                 Id = new Guid("62f797e8-e161-4d59-a29a-b1a806b45edb"),
-                Name = "Dove Deep Moisture Body Wash (16 oz)",
+                Name = "Dove Deep Moisture Хидратиращ душгел 1L",
                 Price = 6.49,
                 Count = 300,
-                Description = "Gentle body wash with a rich lather that nourishes and moisturizes the skin.",
+                Description = "Dove Deep Moisture Nourishing Body Wash е създаден с мисъл за вашата кожа, за да осигури дълбока хидратация и трайно подхранване. С уникалната си формула, обогатена с Moisture Renew Blend, този душ-гел комбинира естествени подхранващи вещества и овлажнители на растителна основа, които проникват дълбоко в горните слоеве на кожата, за да я поддържат мека и гладка.",
                 SupplierId = 5,
                 CategoryId = 5,
                 ImgPath = "dove-deep-moisture-body-wash.jpg"
@@ -235,10 +235,10 @@ namespace IMS.Data.SeedDb
             BoschCordlessDrill = new Product()
             {
                 Id = new Guid("7508feee-3168-401e-84d7-9e126b394196"),
-                Name = "Bosch Cordless Drill/Driver Kit (12V)",
+                Name = "Bosch Безжичен бормашинен комплект (12V)",
                 Price = 119.99,
                 Count = 80,
-                Description = "Compact and lightweight cordless drill with two-speed settings, a rechargeable battery, and a carrying case.",
+                Description = "Професионалният комплект инструменти BOSCH 12V включва: Акумулаторен ъглошлайф GWS 12V-76 SOLO + Акумулаторен винтоверт GSR 12V-30 SOLO, 1 батерия 4.0Ah, 1 батерия 2.0Ah, зарядно устройство, два броя дискове и чанта за инструменти.",
                 SupplierId = 6,
                 CategoryId = 6,
                 ImgPath = "Bosch_GSR_120-Li_Cordless_Drill_Driver___22210.jpg"
@@ -247,10 +247,10 @@ namespace IMS.Data.SeedDb
             WilsonEvolutionIndoorBasketball = new Product()
             {
                 Id = new Guid("aef8b15d-c498-4ee4-a31f-ef67e1c970c7"),
-                Name = "Wilson Evolution Indoor Basketball",
+                Name = "Баскетболна топка Wilson Evolution",
                 Price = 59.99,
                 Count = 120,
-                Description = "High-quality indoor basketball with a soft feel, designed for competitive play and superior grip.",
+                Description = "Емблематичната баскетболна топка с несравнимо усещане. Създаден за играчи, които знаят, че упоритата работа води до еволюция.",
                 SupplierId = 7,
                 CategoryId = 7,
                 ImgPath = "wilson-evolution-indoor-basketball.jpg"
