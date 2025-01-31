@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link href="~/lib/bootstrap/dist/css/aos/aos.css" rel="stylesheet">
+    <link href="~/lib/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/lib/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="~/lib/glightbox/css/glightbox.min.css" rel="stylesheet" />
 
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -102,15 +105,53 @@
   </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/toastr/toastr.min.js"></script>
     <script src="~/lib/bootstrap/dist/css/aos/aos.js" asp-append-version="true"></script>
+
+    <script src="~/lib/glightbox/js/glightbox.min.js"></script>
     <script>
     AOS.init({
         duration: 1200,  // Duration of the animation in ms
     });
 </script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+        // Initialize Swiper after all the page content is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            const swiper = new Swiper('.init-swiper', {
+                loop: true,
+                speed: 600,
+                autoplay: {
+                    delay: 5000
+                },
+                slidesPerView: 'auto',
+                centeredSlides: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    type: 'bullets',
+                    clickable: true
+                },
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 0
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 20
+                    },
+                    1200: {
+                        slidesPerView: 5,
+                        spaceBetween: 20
+                    }
+                }
+            });
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

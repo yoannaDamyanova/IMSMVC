@@ -1449,7 +1449,24 @@ section,
 
     .gallery .swiper-slide-active {
         text-align: center;
+        background-color: white;
     }
+
+    .gallery .product-image-container {
+        width: 100%;
+        height: 300px; /* Fixed height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* Crop any overflow */
+    }
+
+    .gallery .swiper-slide:not(.swiper-slide-active) {
+        background-color: white;
+        padding: 20px;
+        min-height: 550px;
+    }
+    
 
 @media (min-width: 992px) {
     .gallery .swiper-wrapper {
@@ -1457,7 +1474,6 @@ section,
     }
 
     .gallery .swiper-slide-active {
-        background: var(--background-color);
         border: 6px solid var(--accent-color);
         padding: 4px;
         z-index: 1;

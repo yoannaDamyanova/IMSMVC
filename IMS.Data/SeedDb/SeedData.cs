@@ -217,7 +217,7 @@ namespace IMS.Data.SeedDb
                 Description = "Класически прави дънки, изработени от издръжлив памук, налични в различни размери и измивания.",
                 SupplierId = 4,
                 CategoryId = 4,
-                ImgPath = "mens_501_original.jpg"
+                ImgPath = "mens_501_original.webp"
             };
 
             DoveDeepMoistureBodyWash = new Product()

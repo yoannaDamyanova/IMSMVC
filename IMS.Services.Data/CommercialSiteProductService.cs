@@ -43,6 +43,7 @@ namespace IMS.Services.Data
                     Price = csp.Product.Price,
                     Id = csp.Product.Id,
                     Count = csp.ProductCount,
+                    PhotoFileName = csp.Product.ImgPath,
                 }).ToList();
         }
 

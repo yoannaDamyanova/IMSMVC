@@ -6,55 +6,61 @@
     ViewBag.Title = Localizer["Моят офис"];
 }
 
-<div class="container mt-5">
-    <div class="row">
-        <!-- Employee Info Card -->
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">@Model.Name</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Години стаж: @Model.YearsOfExperience</h6>
-                    <p class="card-text">В момента работи в:</p>
-                    <p><strong>@Model.CommercialSiteName</strong></p>
+<section id="why-us" class="why-us section light-background">
+
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="why-box h-100">
+                    <h3>@Model.Name</h3>
+                    <p>
+                        Години стаж: @Model.YearsOfExperience.
+                    </p>
+                </div>
+            </div><!-- End Why Box -->
+
+            <div class="col-lg-8 d-flex align-items-stretch">
+                <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="" data-aos="fade-up" data-aos-delay="400">
+                        <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                            <i class="bi bi-inboxes"></i>
+                            <p>В момента работи в:</p>
+                            <h4>@Model.CommercialSiteName</h4>
+                        </div>
+                    </div><!-- End Icon Box -->
+
                 </div>
             </div>
+
         </div>
 
-        <!-- Office Info Card -->
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Информация за търговския обект</h5>
-                    <p class="card-text">Име: @Model.CommercialSiteName</p>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <div class="row mt-4">
-        <!-- Products Card -->
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5>Заявени продукти</h5>
-                </div>
-                <div class="card-body">
-                    @if (Model.Products?.Any() == true)
-                    {
-                        <div class="row">
-                            @foreach (var product in Model.Products)
-                            {
-                                <partial name="_ProductPartial" model="product" />
-                            }
+</section><!-- /Why Us Section -->
+<section id="gallery" class="gallery section light-background">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Продукти</h2>
+        <p><span>Заявени</span> <span class="description-title">Продукти</span></p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        @if (Model.Products.Any() == true)
+        {
+            <div class="swiper init-swiper">
+                <div class="swiper-wrapper align-items-center">
+                    @foreach(var product in Model.Products) {
+                        <div class="swiper-slide h-100">
+                            <partial name="_ProductSwiperPartial" model="product" />
                         </div>
                     }
-                    else
-                    {
-                        <p>В момента няма заявени продукти.</p>
-                    }
                 </div>
+                <div class="swiper-pagination"></div>
             </div>
-        </div>
+        }
     </div>
-</div>
+</section><!-- /Gallery Section -->
 
