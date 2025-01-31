@@ -89,6 +89,20 @@ namespace IMS.Web.Controllers
         [MustBeEmployee]
         public async Task<IActionResult> RequestProduct(ProductRequestViewModel model)
         {
+            Guid id = Guid.Empty;
+            if (!IsGuidValid(model.Id, ref id))
+            {
+                return BadRequest();
+            }
+
+            if (await productService.ExistsAsync(id) == false)
+            {
+                return BadRequest();
+            }
+            if (model.EmployeeSiteId == 0)
+            {
+                return BadRequest();
+            }
             await productService.RequestProductAsync(model);
             return RedirectToAction(nameof(All));
         }

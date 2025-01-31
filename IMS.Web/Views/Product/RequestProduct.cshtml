@@ -30,19 +30,21 @@
                 <p><strong>Цена:</strong> @Model.Price.ToString() лв.</p>
                 <p><strong>Налични:</strong> @Model.Count бр.</p>
                 <p><strong>Производител:</strong> @Model.SupplierName</p>
-                <form asp-action="RequestProduct" asp-controller="Product" method="post" role="form">
+                <form asp-action="RequestProduct" asp-controller="Product" asp-route-Id="@Model.Id" method="post" role="form">
                     <div class="row gy-4 j">
                         <div class="col-lg-4 col-md-6">
                             <input asp-for="RequestedCount" class="form-control" type="number" min="1" max="@Model.Count" />
                             <span asp-validation-for="RequestedCount" class="text-danger"></span>
                         </div>
-                        <div  class="col-lg-4 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <button type="submit" class="btn btn-getstarted w-100">Изпрати заявката</button>
                         </div>
-                        
+
                         <div class="col-lg-4 col-md-6">
                             <a asp-action="All" asp-controller="Product" class="btn btn-getstarted w-100">Назад</a>
-                        </div>       
+                        </div>
+                        <input type="hidden" asp-for="@Model.Count" value="@Model.Count" />
+                        <input type="hidden" asp-for="@Model.EmployeeSiteId" value="@employee.CommercialSiteId" />
                     </div>
                 </form>
             </div>
