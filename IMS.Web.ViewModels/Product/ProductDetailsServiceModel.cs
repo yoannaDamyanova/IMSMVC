@@ -20,5 +20,7 @@ namespace IMS.Web.ViewModels.Product
         public string SupplierName { get; set; } = null!;
 
         public int Count { get; set; }
+
+        public string PhotoFileName { get; set; } = null!;
     }
 }

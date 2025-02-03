@@ -4,36 +4,28 @@
     ViewBag.Title = @Model.Name;
 }
 
-<div class="container mt-5">
+<section id="gallery" class="gallery section light-background">
 
-    <!-- Commercial Site Name -->
-    <div class="card mb-4 shadow-sm">
-        <div class="card-body">
-            <h4 class="card-title">@Model.Name</h4>
-        </div>
-    </div>
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Продукти</h2>
+        <p><span>Налични</span> <span class="description-title">Продукти</span></p>
+    </div><!-- End Section Title -->
 
-    <!-- Available Products -->
-    <div class="card">
-        <div class="card-header">
-            <h5>Налични продукти</h5>
-        </div>
-        <div class="card-body">
-            @if (Model.AvailableProducts?.Any() == true)
-            {
-                    <div class="row">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        @if (Model.AvailableProducts?.Any() == true)
+        {
+            <div class="swiper init-swiper office-swiper">
+                <div class="swiper-wrapper align-items-center">
                     @foreach (var product in Model.AvailableProducts)
                     {
-                                <div class="col-md-5">
-                                    <partial name="_ProductPartial" model="product" />
-                                </div>
+                        <div class="swiper-slide h-100">
+                            <partial name="_ProductSwiperPartial" model="product" />
+                        </div>
                     }
-                    </div>
-            }
-            else
-            {
-                    <p class="text-muted">В момента в избрания обект няма налични продукти!</p>
-            }
-        </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        }
     </div>
-</div>
+</section><!-- /Gallery Section -->

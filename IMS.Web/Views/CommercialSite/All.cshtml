@@ -4,22 +4,33 @@
     ViewBag.Title = "Всички търговски обекти";
 }
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Търговски обекти</h2>
+<section id="testimonials" class="testimonials section light-background">
 
-    @if (Model.Any())
-    {
-        <div class="row">
-            @foreach (var site in Model)
-            {
-                <div class="col-md-4">
-                    <partial name="_CommercialSitePartial" model="site" />
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Търговски обекти</h2>
+        <p>Нашите <span class="description-title">Търговски обекти</span></p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        @if (Model.Any())
+        {
+            <div class="swiper site-swiper init-swiper">
+                <div class="swiper-wrapper">
+                    @foreach (var commercialSite in Model)
+                    {
+                        <div class="swiper-slide">
+                            <partial name="_CommercialSitePartial" model="commercialSite" />
+                        </div>
+                    }
                 </div>
-            }
-        </div>
-    }
-    else
-    {
-        <p class="text-center text-muted">В момента няма регистрирани търговски обекти.</p>
-    }
-</div>
+                <div class="swiper-pagination"></div>
+            </div>
+        }
+        else
+        {
+            <h3>В момента няма регистрирани търговски обекти.</h3>
+        }
+    </div>
+
+</section><!-- /Testimonials Section -->

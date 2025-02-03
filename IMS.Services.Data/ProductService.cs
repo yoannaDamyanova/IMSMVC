@@ -130,7 +130,8 @@ namespace IMS.Services.Data
                     Description = p.Description,
                     SupplierName = p.Supplier.Name,
                     Price = p.Price,
-                    Count = p.Count
+                    Count = p.Count,
+                    PhotoFileName = p.ImgPath
                 })
                 .FirstAsync();
         }
@@ -161,7 +162,7 @@ namespace IMS.Services.Data
         {
             var products = await repository.AllReadOnly<Product>()
                 .Where(p => p.Count > 0)
-                .Take(5)
+                .Take(7)
                 .Select(p => new ProductIndexServiceModel()
                 {
                     Id = p.Id.ToString(),
@@ -297,6 +298,19 @@ namespace IMS.Services.Data
                 await repository.AddAsync(csp);
             }
             await repository.SaveChangesAsync();
+        }
+
+        public async Task<int> AllProductsCountAsync()
+        {
+            return await repository.AllReadOnly<Product>()
+                .CountAsync();
+        }
+
+        public async Task<double> SumProductPricesAsync()
+        {
+            return await repository.AllReadOnly<Product>()
+                .Select(p=>p.Price)
+                .SumAsync();
         }
     }
 }

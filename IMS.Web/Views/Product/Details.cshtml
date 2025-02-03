@@ -1,39 +1,51 @@
 ﻿@model ProductDetailsServiceModel
 @inject IProductService productService
+@inject IEmployeeService employeeService;
 
 @{
     ViewBag.Title = Model.Name;
 }
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <!-- Fitness Class Information -->
-            <div class="mb-4">
-                <p class="display-4 text-primary"><u>@Model.Name</u></p>
-                <p>@Model.Description</p>
-                <p><strong>Катеогория:</strong> @Model.SupplierName</p>
-            </div>
+<section id="about" class="about section">
 
-            <div class="d-flex flex-wrap mb-4">
-                @if (this.User?.Identity?.IsAuthenticated == true)
-                {
-                    <!-- Edit/Delete/Cancel Actions (For Admin) -->
-                    @if (User.IsAdmin())
+    <div class="container section-title" data-aos="fade-up">
+        <h3>@Model.Name</h3>
+
+    </div>
+
+    <div class="container">
+
+        <div class="row gy-4">
+            <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+                <figure class="d-flex justify-content-center align-items-center img-container">
+                    <img src="@Url.Content($"~/images/{Model.PhotoFileName}")" class="img-fluid mb-4" alt="">
+                </figure> 
+                <div class="book-a-table">
+                    @if (await employeeService.ExistsByUserIdAsync(User.Id()) && User.IsAdmin() == false)
                     {
-                        <a class="btn btn-warning mb-2 mb-md-0 mr-md-2" asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-productId="@Model.Id">Редактиране</a>
-                        <a class="btn btn-danger mb-2 mb-md-0 mr-md-2" asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-productId="@Model.Id">Изтриване</a>
+                        <a asp-controller="Product" asp-action="RequestProduct" asp-route-productId="@Model.Id" class="btn more-btn col-12">Направи заявка</a>
                     }
-                }
+                    else if (User.IsAdmin())
+                    {
+                        <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-productId="@Model.Id" class="btn more-btn col-5">Редактирай</a>
+                        <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-productId="@Model.Id" class="btn more-btn col-5">Изтрий</a>
+                    }
+                </div>
             </div>
-
-            <!-- Supplier Info Card -->
-            <div class="card mb-4 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Производител</h5>
-                    <p class="card-text"><strong>Name:</strong> @Model.SupplierName</p>
+            <div class="col-lg-5" data-aos="fade-up" data-aos-delay="250">
+                <div class="content ps-0 ps-lg-5">
+                    <p class="fst-italic">
+                       @Model.Description
+                    </p>
+                    <ul>
+                        <li><i class="bi bi-check-circle-fill"></i> <span>Цена: @Model.Price лв.</span></li>
+                        <li><i class="bi bi-check-circle-fill"></i> <span>Наличност: @Model.Count бр.</span></li>
+                        <li><i class="bi bi-check-circle-fill"></i> <span>Производител: @Model.SupplierName</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
+
     </div>
-</div>
+
+</section>

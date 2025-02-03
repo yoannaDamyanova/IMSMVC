@@ -8,10 +8,14 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link href="~/lib/bootstrap/dist/css/aos/aos.css" rel="stylesheet">
+    <link href="~/lib/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/css/adminStyles.css" rel="stylesheet" />
 
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 </head>
 <body>
     <header id="header" class="header d-flex align-items-center sticky-top">
@@ -39,21 +43,22 @@
         @RenderBody()
     </main>
 
-    <footer class="footer text-light">
-        <div class="container">
-            &copy; @DateTime.Today.Year - Stockly
-            <span class="text-black-50">Тази страница е достъпна единствено за администратори!</span>
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Admin</span></strong>. All Rights Reserved
         </div>
-    </footer>
+    </footer><!-- End Footer -->
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/bootstrap/dist/css/aos/aos.js"></script>
+    <script src="~/js/adminScript.js"></script>
     <script>
         AOS.init({
             duration: 1200,  // Duration of the animation in ms
         });
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

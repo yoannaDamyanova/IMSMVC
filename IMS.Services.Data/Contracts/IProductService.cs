@@ -41,5 +41,9 @@ namespace IMS.Services.Data.Contracts
             int classesPerPage = 1);
 
         Task RequestProductAsync(ProductRequestViewModel model);
+
+        Task<int> AllProductsCountAsync();
+
+        Task<double> SumProductPricesAsync();
     }
 }

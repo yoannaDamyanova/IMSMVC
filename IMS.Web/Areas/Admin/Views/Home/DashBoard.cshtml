@@ -1,69 +1,190 @@
-﻿﻿@{
+﻿@inject IProductService productService;
+@inject IUserService userService;
+
+@{
     ViewData["Title"] = "Dashboard";
 }
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card shadow-sm">
-                <div class="card-header bg-success text-white">
-                    <h2 class="display-4">Добре дошъл Админ!</h2>
+@{
+    var lastSevenProducts = await productService.LastSevenProductsAsync();
+}
+<aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link " asp-action="DashBoard" asp-controller="Home">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Продукти</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a asp-controller="Product" asp-action="Add">
+                        <i class="bi bi-circle"></i><span>Добави</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Product" asp-action="All" asp-area="">
+                        <i class="bi bi-circle"></i><span>Всички продукти</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
+
+        <li class="nav-heading">Страници</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-action="All" asp-controller="CommercialSite" asp-area="">
+                <i class="bi bi-person"></i>
+                <span>Търговски обекти</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-action="All" asp-controller="Employee">
+                <i class="bi bi-person"></i>
+                <span>Служители</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-action="All" asp-controller="User">
+                <i class="bi bi-question-circle"></i>
+                <span>Потребители</span>
+            </a>
+        </li><!-- End F.A.Q Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-action="All" asp-controller="Supplier">
+                <i class="bi bi-envelope"></i>
+                <span>Производители</span>
+            </a>
+        </li><!-- End Contact Page Nav -->
+    </ul>
+
+</aside><!-- End Sidebar-->
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Начало</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+        <div class="row">
+
+            <!-- Left side columns -->
+            <div class="col-lg-12">
+                <div class="row">
+
+                    <!-- Sales Card -->
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card sales-card">
+
+                            <div class="card-body">
+                                <h5 class="card-title"><a asp-action="All" asp-controller="Product" asp-area="" style="color: inherit">Продукти <span>| Брой</span></a></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-cart"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>@await productService.AllProductsCountAsync()</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- End Sales Card -->
+                    <!-- Revenue Card -->
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card revenue-card">
+                            <div class="card-body">
+                                <h5 class="card-title"><a asp-action="All" asp-controller="Product" asp-area="" style="color: inherit;">Продукти <span>| Обща цена</span></a></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-currency-dollar"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>@await productService.SumProductPricesAsync() лв.</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- End Revenue Card -->
+                    <!-- Customers Card -->
+                    <div class="col-xxl-4 col-xl-12">
+
+                        <div class="card info-card customers-card">
+                            <div class="card-body">
+                                <h5 class="card-title"><a asp-action="All" asp-controller="User" style="color: inherit;">Потребители <span>| Брой</span></a></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>@await userService.UsersCountAsync()</h6>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div><!-- End Customers Card -->
+                    <!-- Recent Sales -->
+                    <div class="col-12">
+                        <div class="card recent-sales overflow-auto">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Последно добавени продукти</h5>
+
+                                <table class="table table-borderless datatable">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Име</th>
+                                            <th scope="col">Цена</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (lastSevenProducts.Any())
+                                        {
+                                            foreach (var product in lastSevenProducts)
+                                            {
+
+                                                <tr>
+                                                    <th scope="row"><a asp-action="Details" asp-controller="Product" asp-area="" asp-route-productId="@product.Id.ToString()" style="color: inherit;">@product.Id</a></th>
+                                                    <td>@product.Name</td>
+                                                    <td>@product.Price лв.</td>
+                                                </tr>
+
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div><!-- End Recent Sales -->
                 </div>
-                <div class="card-body">
-                    <p class="lead mb-1 mt-3">
-                        Това е твоето администраторско пространство - можеш да <b>преглеждаш</b>, <b>създаваш</b>, <b>изтриваш</b> и <b>редактираш</b> продукти.
-                    </p>
-                    <p class="lead mt-1">
-                        Можеш да виждаш всички<b>потребители и служители</b>, всички <b>производители</b>, и всички <b>търговски обекти</b> в системата.
-                    </p>
-                    <hr class="my-4">
-                    <div class="d-flex justify-content-center flex-wrap">
-                        <a asp-area="" asp-controller="Product" asp-action="All" class="btn btn-custom btn-lg mx-2 mb-3">
-                            Продукти
-                        </a>
-                        <a asp-area="Admin" asp-controller="Product" asp-action="Add" class="btn btn-custom btn-lg mx-2 mb-3">
-                            Добави продукт
-                        </a>
-                        <a asp-area="Admin" asp-controller="Employee" asp-action="All" class="btn btn-custom btn-lg mx-2 mb-3">
-                            Служители
-                        </a>
-                        <a asp-area="Admin" asp-controller="Supplier" asp-action="All" class="btn btn-custom btn-lg mx-2 mb-3">
-                            Производители
-                        </a>
-                        <a asp-area="Admin" asp-controller="Supplier" asp-action="All" class="btn btn-custom btn-lg mx-2 mb-3">
-                            Обекти
-                        </a>
-                        <a asp-area="Admin" asp-controller="User" asp-action="All" class="btn btn-custom btn-lg mx-2 mb-3">
-                            Потребители
-                        </a>
-                    </div>
-                </div>
-            </div>
+            </div><!-- End Left side columns -->
         </div>
-    </div>
-</div>
+    </section>
 
-<style>
-    /* Custom CSS to match the previous theme */
-    .btn-custom {
-        background-color: #198754; /* Custom green shade */
-        color: white;
-        border: none;
-    }
-
-        .btn-custom:hover {
-            background-color: #145c32; /* Darker green on hover */
-        }
-
-    .card {
-        border-radius: 8px;
-    }
-
-    .card-header {
-        border-radius: 8px 8px 0 0;
-    }
-
-    .card-body {
-        background-color: #f8f9fa;
-    }
-</style>
+</main><!-- End #main -->

@@ -1,14 +1,25 @@
 ﻿@model CommercialSiteViewModel
 
-<div class="card mb-4 shadow-sm">
-    <div class="card-body">
-        <!-- Commercial Site Name -->
-        <h4 class="card-title text-center">@Model.Name</h4>
-
-        <!-- Детайли Button -->
-        <a asp-controller="CommercialSite" asp-action="Details" asp-route-siteId="@Model.Id"
-           class="btn btn-outline-primary w-100">
-            Детайли
-        </a>
+<div class="testimonial-item">
+    <div class="row gy-4 justify-content-center">
+        <div class="col-lg-6">
+            <div class="testimonial-content">
+                <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>"Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful." – Albert Schweitzer</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <h1>@Model.Name</h1>
+                <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 text-center">
+            <a asp-controller="CommercialSite" asp-action="Details" asp-route-siteId="@Model.Id"
+               class="btn btn-get-started w-100">
+                Детайли
+            </a>
+        </div>
     </div>
 </div>

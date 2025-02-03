@@ -4,19 +4,10 @@
     ViewData["Title"] = "Редактиране на продукт";
 }
 
-<h2 class="text-center mb-4">@ViewData["Title"]</h2>
-<hr />
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <partial name="_ProductFormPartial" model="@Model" />
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container text-center mt-3">
+    <h2>@ViewBag.Title</h2>
+    <partial name="_ProductFormPartial" model="@Model" />
 </div>
 
 @section Scripts {
