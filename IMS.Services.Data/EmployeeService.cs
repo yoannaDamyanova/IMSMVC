@@ -46,7 +46,7 @@ namespace IMS.Services.Data
                 .FirstOrDefaultAsync(e => e.Id == employeeId);
         }
 
-        public async Task<int> GetEmployeeIdByUserId(string userId)
+        public async Task<int> GetEmployeeIdByUserIdAsync(string userId)
         {
             return (await repository.All<Employee>()
                .FirstOrDefaultAsync(e => e.UserId == userId)).Id;
@@ -65,7 +65,7 @@ namespace IMS.Services.Data
             return empl.YearsOfExperience;
         }
 
-        public async Task<bool> IsApprovedById(string userId)
+        public async Task<bool> IsApprovedByIdAsync(string userId)
         {
             Employee empl = await repository.AllReadOnly<Employee>()
                 .FirstOrDefaultAsync(e => e.UserId == userId);
@@ -73,7 +73,7 @@ namespace IMS.Services.Data
             return empl != null && empl.IsApproved;
         }
 
-        public async Task<EmployeeOfficeViewModel> GetEmployeeOfficeByUserId(string employeeId)
+        public async Task<EmployeeOfficeViewModel> GetEmployeeOfficeByUserIdAsync(string employeeId)
         {
             return await repository.AllReadOnly<Employee>()
                .Where(e => e.UserId == employeeId)
@@ -89,6 +89,23 @@ namespace IMS.Services.Data
                    Products = commercialSiteProductService.GetAllAvailableProducts(e.CommercialSiteId ?? 0)
                }).FirstAsync();
 
+        }
+
+        public async Task<IEnumerable<EmployeeOfficeViewModel>> AllAsync()
+        {
+            return await repository.AllReadOnly<Employee>()
+                .Include(e => e.User)
+                .Include(e => e.CommercialSite)
+                .Select(e => new EmployeeOfficeViewModel()
+                {
+                    Name = $"{e.User.FirstName} {e.User.LastName}",
+                    YearsOfExperience = e.YearsOfExperience,
+                    CommercialSiteName = e.CommercialSite.Name,
+                    CommercialSiteId = e.CommercialSiteId,
+
+                    Products = commercialSiteProductService.GetAllAvailableProducts(e.CommercialSiteId ?? 0)
+                })
+                .ToListAsync();
         }
     }
 }

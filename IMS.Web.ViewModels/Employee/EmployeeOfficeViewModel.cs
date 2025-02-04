@@ -9,9 +9,9 @@ namespace IMS.Web.ViewModels.Employee
 
         public int YearsOfExperience { get; set; }
 
-        public int CommercialSiteId { get; set; }
+        public int? CommercialSiteId { get; set; }
 
-        public string CommercialSiteName { get; set; } = string.Empty;
+        public string? CommercialSiteName { get; set; } = string.Empty;
 
         public IEnumerable<ProductServiceModel>? Products { get; set; }     
     }

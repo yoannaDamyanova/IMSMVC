@@ -27,7 +27,11 @@
                         <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                             <i class="bi bi-inboxes"></i>
                             <p>В момента работи в:</p>
-                            <h4>@Model.CommercialSiteName</h4>
+                            <h4>
+                                <a asp-action="Details" asp-controller="CommercialSite" asp-route-siteId="@Model.CommercialSiteId" >
+                                    @Model.CommercialSiteName
+                                </a>
+                            </h4>
                         </div>
                     </div><!-- End Icon Box -->
 

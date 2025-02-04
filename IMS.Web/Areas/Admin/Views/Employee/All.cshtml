@@ -1,0 +1,145 @@
+﻿@model IEnumerable<EmployeeOfficeViewModel>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewBag.Title = Localizer["Служители"];
+}
+
+<!-- Sidebar -->
+<aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link " asp-action="DashBoard" asp-controller="Home">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Продукти</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a asp-controller="Product" asp-action="Add">
+                        <i class="bi bi-circle"></i><span>Добави</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Product" asp-action="All" asp-area="">
+                        <i class="bi bi-circle"></i><span>Всички продукти</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
+
+        <li class="nav-heading">Страници</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-action="All" asp-controller="CommercialSite" asp-area="">
+                <i class="bi bi-person"></i>
+                <span>Търговски обекти</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-action="All" asp-controller="Employee">
+                <i class="bi bi-person"></i>
+                <span>Служители</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-action="All" asp-controller="User">
+                <i class="bi bi-question-circle"></i>
+                <span>Потребители</span>
+            </a>
+        </li><!-- End F.A.Q Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-action="All" asp-controller="Supplier">
+                <i class="bi bi-envelope"></i>
+                <span>Производители</span>
+            </a>
+        </li><!-- End Contact Page Nav -->
+    </ul>
+
+</aside><!-- End Sidebar-->
+<!-- Main Content -->
+<main id="main" class="main">
+    <!-- Page Title -->
+    <div class="pagetitle">
+        <h1>@ViewBag.Title</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Начало</a></li>
+                <li class="breadcrumb-item active">@ViewBag.Title</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    <!-- Employee List -->
+    <section class="section dashboard">
+        <div class="container">
+            @foreach (var employee in Model)
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row gy-4">
+                            <!-- Employee Info -->
+                            <div class="col-lg-6">
+                                <div class="info-card">
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center bg-primary-light">
+                                            <i class="bi bi-person"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h5 class="card-title">@employee.Name</h5>
+                                            <p>Години стаж: @employee.YearsOfExperience години</p>
+                                            <p>
+                                                В момента работи в:
+                                                <a asp-action="Details" asp-controller="CommercialSite" asp-route-siteId="@employee.CommercialSiteId" asp-area="">
+                                                    @employee.CommercialSiteName
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                           
+                        </div>
+                        <div class="row gallery">
+                            <!-- Product Swiper -->
+                            <div class="col">
+                                <div class="card info-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Продукти</h5>
+                                        @if (employee.Products != null && employee.Products.Any())
+                                        {
+                                            <div class="swiper init-swiper office-swiper">
+                                                <div class="swiper-wrapper align-items-center">
+                                                    @foreach (var product in employee.Products) // Display up to 3 products
+                                                    {
+                                                        <div class="swiper-slide h-100">
+                                                            <partial name="_ProductSwiperPartial" model="product" />
+                                                        </div>
+                                                    }
+                                                </div>
+                                                <div class="swiper-pagination"></div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <p class="text-muted">Няма налични продукти.</p>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</main><!-- End #main -->

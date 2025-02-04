@@ -16,10 +16,12 @@ namespace IMS.Services.Data.Contracts
 
         public Task<Employee> GetByIdAsync(int userId);
 
-        Task<int> GetEmployeeIdByUserId(string userId);
+        Task<int> GetEmployeeIdByUserIdAsync(string userId);
 
-        Task<EmployeeOfficeViewModel> GetEmployeeOfficeByUserId(string employeeId);
+        Task<EmployeeOfficeViewModel> GetEmployeeOfficeByUserIdAsync(string employeeId);
 
-        Task<bool> IsApprovedById(string userId);
+        Task<bool> IsApprovedByIdAsync(string userId);
+
+        Task<IEnumerable<EmployeeOfficeViewModel>> AllAsync();
     }
 }

@@ -2,7 +2,7 @@
 @inject IProductService productService
 @inject IEmployeeService employeeService
 
-<div class="d-flex flex-column justify-content-between h-100">
+<div class="d-flex flex-column justify-content-between px-2">
     <a class="glightbox" data-gallery="images-gallery">
         <div class="product-image-container">
             <img src="@Url.Content($"~/images/{Model.PhotoFileName}")" class="img-fluid" alt="@Model.Name">
@@ -17,12 +17,12 @@
     <!-- Admin/Employee Actions -->
     @if (User?.Identity?.IsAuthenticated == true)
     {
-        <div class="d-flex flex-wrap">
+        <div class="row gy-2">
 
             @if (User.IsAdmin())
             {
-                <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-productId="@Model.Id" class="btn more-btn col-5">Редактирай</a>
-                <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-productId="@Model.Id" class="btn more-btn col-5">Изтрий</a>
+                <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-productId="@Model.Id" class="btn more-btn">Редактирай</a>
+                <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-productId="@Model.Id" class="btn more-btn">Изтрий</a>
             }
             @if (await employeeService.ExistsByUserIdAsync(User.Id()) && User.IsAdmin() == false)
             {

@@ -51,7 +51,7 @@ namespace IMS.Web.Controllers
         [MustBeEmployee]
         public async Task<IActionResult> Office(string employeeId)
         {
-            var model = await employeeService.GetEmployeeOfficeByUserId(employeeId);
+            var model = await employeeService.GetEmployeeOfficeByUserIdAsync(employeeId);
 
             return View(model);
         }

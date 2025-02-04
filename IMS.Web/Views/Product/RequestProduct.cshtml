@@ -5,7 +5,7 @@
     ViewBag.Title = "Заяви продукт";
 }
 @{
-    int employeeId = await employeeService.GetEmployeeIdByUserId(User.Id());
+    int employeeId = await employeeService.GetEmployeeIdByUserIdAsync(User.Id());
 
     var employee = await employeeService.GetByIdAsync(employeeId);
 }
