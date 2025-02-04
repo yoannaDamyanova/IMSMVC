@@ -1,5 +1,6 @@
 ﻿@inject IProductService productService;
 @inject IUserService userService;
+@inject ISupplierService supplierService;
 
 @{
     ViewData["Title"] = "Dashboard";
@@ -7,6 +8,8 @@
 
 @{
     var lastSevenProducts = await productService.LastSevenProductsAsync();
+
+    var suppliers = await supplierService.AllAsync();
 }
 <aside id="sidebar" class="sidebar">
 
@@ -61,7 +64,7 @@
         </li><!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" asp-action="All" asp-controller="Supplier">
+            <a class="nav-link collapsed" href="#suppliers">
                 <i class="bi bi-envelope"></i>
                 <span>Производители</span>
             </a>
@@ -73,7 +76,7 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Dashboard</h1>
+        <h1 style="font: inherit;">Dashboard</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Начало</a></li>
@@ -101,14 +104,14 @@
                                         <i class="bi bi-cart"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>@await productService.AllProductsCountAsync()</h6>
+                                        <h2 style="font:inherit;">@await productService.AllProductsCountAsync()</h2>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                     </div><!-- End Sales Card -->
-                    <!-- Revenue Card -->
+                    <!-- Price Card -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card revenue-card">
                             <div class="card-body">
@@ -119,7 +122,7 @@
                                         <i class="bi bi-currency-dollar"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>@await productService.SumProductPricesAsync() лв.</h6>
+                                        <h2 style="font:inherit;">@await productService.SumProductPricesAsync() лв.</h2>
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +141,7 @@
                                         <i class="bi bi-people"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>@await userService.UsersCountAsync()</h6>
+                                        <h2 style="font:inherit;">@await userService.UsersCountAsync()</h2>
                                     </div>
                                 </div>
 
@@ -177,7 +180,42 @@
                                         }
                                     </tbody>
                                 </table>
+                            </div>
 
+                        </div>
+                    </div><!-- End Recent Sales -->
+                    <!-- Suppliers -->
+                    <div class="col-12" id="suppliers">
+                        <div class="card recent-sales overflow-auto">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Производители</h5>
+
+                                <table class="table table-borderless datatable">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Име</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (suppliers.Any())
+                                        {
+                                            foreach (var supplier in suppliers)
+                                            {
+
+                                                <tr>
+                                                    <th scope="row">@supplier.Id</th>
+                                                    <td>@supplier.Name</td>
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr>В момента няма добавени производители</tr>
+                                        }
+                                    </tbody>
+                                </table>
                             </div>
 
                         </div>

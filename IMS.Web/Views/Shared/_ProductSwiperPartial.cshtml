@@ -13,7 +13,7 @@
         <h4>@Model.Name</h4>
     </a>
     <p class="price">@Model.Price лв.</p>
-    <p class="ingridients">Налични: @Model.Count бр.</p>
+    <p class="ingridients">Заявени: @Model.Count бр.</p>
     <!-- Admin/Employee Actions -->
     @if (User?.Identity?.IsAuthenticated == true)
     {
