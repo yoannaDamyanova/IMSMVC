@@ -24,21 +24,22 @@
 
                 <!-- Price Field -->
                 <div class="form-group mb-4">
-                    <input asp-for="Price" class="form-control" type="number" min="0.01" max="100000.00" placeholder="Цена" />
+                    <label asp-for="Price" class="text-left">Цена</label>
+                    <input asp-for="Price" class="form-control" type="number" min="0.01" max="100000.00" value="0.01" />
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
 
                 <!-- Count Field -->
                 <div class="form-group mb-4">
-                    <input asp-for="Count" class="form-control" type="number" min="1" max="1000" step="1" placeholder="Количество" />
+                    <label asp-for="Count" class="text-left">Брой</label>
+                    <input asp-for="Count" class="form-control" type="number" min="1" max="1000" step="1" value="1" />
                     <span asp-validation-for="Count" class="text-danger"></span>
-                    <small class="form-text text-muted">Количество трябва да е между 1 и 1000.</small>
                 </div>
 
                 <!-- Photo Field -->
                 <div class="form-group mb-4">
-                    <label asp-for="PhotoFileName" class="form-label">Добави снимка:</label>
-                    <input type="file" asp-for="PhotoFileName" class="form-control" />
+                    <label asp-for="PhotoFileName" class="form-label btn-get-started">Добави снимка</label>
+                    <input type="file" asp-for="PhotoFileName" class="form-control" accept=".jpg, .jpeg, .png" />
                     <span asp-validation-for="PhotoFileName" class="text-danger"></span>
                 </div>
 
@@ -77,12 +78,7 @@
                     <button type="submit" class="btn btn-getstarted">Запази</button>
                     <a href="@Url.Action("Dashboard", "Home")" class="btn btn-getstarted">Излез</a>
                 </div>
-
             </form>
         </section>
     </div>
 </div>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}

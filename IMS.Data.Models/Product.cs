@@ -20,9 +20,11 @@ namespace IMS.Data.Models
         public string Description { get; set; } = null!;
 
         [Required]
+        [Range(MinCount, MaxCount)]
         public int Count { get; set; }
 
         [Required]
+        [Range(MinPrice, MaxPrice)]
         public double Price { get; set; }
 
         [Required]

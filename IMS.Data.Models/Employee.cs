@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using static IMS.Common.EntityValidationConstants.Employee;
 
 namespace IMS.Data.Models
 {
@@ -14,7 +13,7 @@ namespace IMS.Data.Models
         public string UserId { get; set; } = null!;
 
         [Required]
-        [Range(0, 30)]
+        [Range(MinYOFLength, MaxYOFLength)]
         public int YearsOfExperience { get; set; }
 
         [ForeignKey(nameof(UserId))]

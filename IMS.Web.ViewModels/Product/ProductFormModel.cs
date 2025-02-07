@@ -5,6 +5,8 @@ using static IMS.Common.EntityValidationConstants.Product;
 using IMS.Web.ViewModels.Category;
 using IMS.Web.ViewModels.Supplier;
 using Microsoft.AspNetCore.Http;
+using System.Resources;
+using IMS.Common;
 
 namespace IMS.Web.ViewModels.Product
 {
@@ -19,7 +21,7 @@ namespace IMS.Web.ViewModels.Product
         public string Name { get; set ; } = null!;
 
         [Required(ErrorMessage = RequiredMessage)]
-        [Range(MinPrice, MaxPrice)]
+        [Range(MinPrice, MaxPrice, ErrorMessage = PriceErrorMessage)]
         public double Price { get; set; }
 
         [Required(ErrorMessage = RequiredMessage)]
@@ -33,11 +35,11 @@ namespace IMS.Web.ViewModels.Product
         public int Count { get; set; }
 
         [Required(ErrorMessage = RequiredMessage)]
-        [Display(Name = "Category")]
+        [Display(Name = "Катеогория")]
         public int CategoryId { get; set; }
 
         [Required(ErrorMessage = RequiredMessage)]
-        [Display(Name = "Supplier")]
+        [Display(Name = "Производител")]
         public int SupplierId { get; set; }
 
         [Required(ErrorMessage = RequiredMessage)]

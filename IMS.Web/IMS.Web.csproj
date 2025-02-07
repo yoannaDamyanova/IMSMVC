@@ -36,8 +36,4 @@
     <ProjectReference Include="..\IMS.Web.ViewModels\IMS.Web.ViewModels.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\scripts\" />
-  </ItemGroup>
-
 </Project>
