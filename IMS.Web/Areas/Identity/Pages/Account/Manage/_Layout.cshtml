@@ -1,0 +1,35 @@
+﻿<head>
+    <link href="~/css/adminStyles.css" rel="stylesheet" />
+</head>
+
+@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout != null)
+    {
+        Layout = parentLayout.ToString();
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+
+
+<section>
+    <aside id="sidebar" class="sidebar">
+        <partial name="_ManageNav" />
+    </aside><!-- End Sidebar-->
+
+    <main id="main" class="main">
+        <section class="section dashboard">
+            <div class="row">
+                <div class="col-lg-12">
+                    @RenderBody()
+                </div>
+            </div>
+        </section>
+    </main>
+</section>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

@@ -18,61 +18,74 @@
     <!-- Search Form -->
     <div class="container">
         <form method="get">
-        <div class="row">
-            <!-- Category Filter -->
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label asp-for="Category">@Localizer["Категория"]</label>
-                    <select asp-for="Category" class="form-control">
-                        <option value="">@Localizer["Всички"]</option>
-                        @foreach (var category in Model.Categories)
-                        {
-                            <option value="@category">@category</option>
-                        }
-                    </select>
-                </div>
-            </div>
+            <div class="row gy-2">
+                <!-- Search Term Input -->
+                <div class="col-12">
+                    <div class="form-group">
+                        <div class="social-links d-flex">
+                            <a><i class="bi bi-search"></i></a>
+                            <input asp-for="SearchTerm" class="form-control" placeholder="@Localizer["Търсене"]" />
+                        </div>
 
-            <!-- Status Filter -->
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label asp-for="Supplier">@Localizer["Производиел"]</label>
-                    <select asp-for="Supplier" class="form-control">
-                        <option value="">@Localizer["Всички"]</option>
-                        @foreach (var supplier in Model.Suppliers)
-                        {
-                            <option value="@supplier">@supplier</option>
-                        }
-                    </select>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Search Term Input -->
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label asp-for="SearchTerm">@Localizer["Търсене"]</label>
-                    <input asp-for="SearchTerm" class="form-control" />
+                <!-- Category Filter -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Category">@Localizer["Категория"]</label>
+                        <select asp-for="Category" class="form-control">
+                            <option value="">@Localizer["Всички"]</option>
+                            @foreach (var category in Model.Categories)
+                            {
+                                <option value="@category">@category</option>
+                            }
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Sorting Filter -->
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label asp-for="Sorting">@Localizer["Сортиране по:"]</label>
-                    <select asp-for="Sorting" class="form-control">
-                        <option value="1">@Localizer["Най-ниска цена"]</option>
-                        <option value="2">@Localizer["Най-висока цена"]</option>
-                        <option value="3">@Localizer["Най-малка наличност"]</option>
-                        <option value="4">@Localizer["Най-голяма наличност"]</option>
-                    </select>
+                <!-- Status Filter -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Supplier">@Localizer["Производител"]</label>
+                        <select asp-for="Supplier" class="form-control">
+                            <option value="">@Localizer["Всички"]</option>
+                            @foreach (var supplier in Model.Suppliers)
+                            {
+                                <option value="@supplier">@supplier</option>
+                            }
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Submit Button -->
-            <div class="col-md-12 mt-4 text-center">
-                    <button type="submit" class="btn btn-get-started">@Localizer["Търсене"]</button>
-            </div>
-        </div>
+                <!-- Sorting Filter -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="Sorting">@Localizer["Сортиране по:"]</label>
+                        <select asp-for="Sorting" class="form-control">
+                            <option value="1">@Localizer["Най-ниска цена"]</option>
+                            <option value="2">@Localizer["Най-висока цена"]</option>
+                            <option value="3">@Localizer["Най-малка наличност"]</option>
+                            <option value="4">@Localizer["Най-голяма наличност"]</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="ProductsPerPage">@Localizer["Продукти на страница"]</label>
+                        <select asp-for="ProductsPerPage" class="form-control">
+                            <option value="5">@Localizer["5"]</option>
+                            <option value="10">@Localizer["10"]</option>
+                            <option value="15">@Localizer["15"]</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-md-12 mt-4 text-center">
+                    <button type="submit" class="btn btn-get-started">@Localizer["Приложи"]</button>
+                </div>
         </form>
 
         <hr />

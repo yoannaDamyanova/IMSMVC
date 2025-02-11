@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using static IMS.Web.Extensions.ApplicationBuilderExtensions;
 using static IMS.Web.Extensions.ServiceCollectionExtension;
+using IMS.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace IMS.Web
 {

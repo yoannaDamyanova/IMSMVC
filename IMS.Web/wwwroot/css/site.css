@@ -397,8 +397,7 @@ h6 {
     .footer .address p {
         margin-bottom: 0px;
     }
-
-    .footer .social-links a {
+ .social-links a {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -411,8 +410,7 @@ h6 {
         margin-right: 10px;
         transition: 0.3s;
     }
-
-        .footer .social-links a:hover {
+.social-links a:hover {
             color: var(--accent-color);
             border-color: var(--accent-color);
         }
