@@ -9,12 +9,12 @@ namespace IMS.Web.Controllers
     public class EmployeeController : BaseController
     {
         private IEmployeeService employeeService;
-        private ICommercialSiteService commercialSiteService;
+        //private ICommercialSiteService commercialSiteService;
 
         public EmployeeController(IEmployeeService employeeService, ICommercialSiteService commercialSiteService)
         {
             this.employeeService = employeeService;
-            this.commercialSiteService = commercialSiteService;
+            //this.commercialSiteService = commercialSiteService;
         }
 
         //[HttpGet]

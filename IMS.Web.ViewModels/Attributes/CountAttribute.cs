@@ -8,7 +8,7 @@ namespace FitnessApp.Web.ViewModels.Attributes
         private readonly string _count;
 
         public CountAttribute(string count)
-            : base("Броят, който сте избрали не е валиден1")
+            : base("Броят, който сте избрали не е валиден")
         {
             _count = count;
         }

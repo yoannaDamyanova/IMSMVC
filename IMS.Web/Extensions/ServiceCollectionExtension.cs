@@ -24,7 +24,9 @@ namespace IMS.Web.Extensions
             return services;
         }
 
-        public static IServiceCollection AddApplicationDbContext(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection AddApplicationDbContext(
+            this IServiceCollection services,
+            IConfiguration config)
         {
             var connectionString = config.GetConnectionString("IMSConnection");
             services.AddDbContext<IMSDbContext>(options =>
@@ -37,7 +39,9 @@ namespace IMS.Web.Extensions
             return services;
         }
 
-        public static IServiceCollection AddApplicationIdentity(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection AddApplicationIdentity(
+            this IServiceCollection services, 
+            IConfiguration config)
         {
             services
                 .AddDefaultIdentity<ApplicationUser>(options =>

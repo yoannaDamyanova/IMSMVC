@@ -58,7 +58,7 @@
         </li><!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" asp-action="All" asp-controller="Supplier">
+            <a class="nav-link collapsed" asp-action="DashBoard" asp-controller="Home" asp-fragment="suppliers">
                 <i class="bi bi-envelope"></i>
                 <span>Производители</span>
             </a>
@@ -104,11 +104,11 @@
                                             <td class="text-center">
                                                 @if (user.IsEmployee)
                                                 {
-                                                    <span class="badge bg-success">✔</span> <!-- Green checkmark -->
+                                                    <span class="badge text-white">✔</span> <!-- Green checkmark -->
                                                 }
                                                 else
                                                 {
-                                                    <span class="badge bg-danger">❌</span> <!-- Red cross -->
+                                                    <span class="badge text-white">❌</span> <!-- Red cross -->
                                                 }
                                             </td>
                                         </tr>

@@ -4,7 +4,6 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-<ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
@@ -18,11 +17,15 @@
 }
 else
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
+        <li>
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Register">
+                <button type="submit" class="nav-link btn btn-getstarted">Регистрация</button>
+            </form>
+        </li>
+
+        <li>
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Login">
+                <button type="submit" class="nav-link btn btn-getstarted">Вход</button>
+            </form>
+        </li>
 }
-</ul>

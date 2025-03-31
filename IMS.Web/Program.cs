@@ -1,12 +1,7 @@
-using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc;
-using System.Globalization;
 using static IMS.Web.Extensions.ApplicationBuilderExtensions;
 using static IMS.Web.Extensions.ServiceCollectionExtension;
-using IMS.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace IMS.Web
 {
@@ -18,24 +13,6 @@ namespace IMS.Web
 
             builder.Services.AddApplicationDbContext(builder.Configuration);
             builder.Services.AddApplicationIdentity(builder.Configuration);
-
-            builder.Services.AddLocalization(opt => opt.ResourcesPath = "Resources");
-            builder.Services.Configure<RequestLocalizationOptions>(options =>
-            {
-                var supportedCultures = new CultureInfo[]
-                {
-        new CultureInfo("bg"),
-        new CultureInfo("en")
-                };
-
-                options.DefaultRequestCulture = new RequestCulture("bg");
-                options.SupportedCultures = supportedCultures;
-                options.SupportedUICultures = supportedCultures;
-                options.RequestCultureProviders = new List<IRequestCultureProvider>()
-    {
-        new CookieRequestCultureProvider()
-    };
-            });
 
             builder.Services.AddControllersWithViews(options =>
             {
@@ -74,12 +51,6 @@ namespace IMS.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "Product Details",
-                    pattern: "/Product/Details/{id}/{information}",
-                    defaults: new { Controller = "Product", Action = "Details" }
-                );
-
-                endpoints.MapControllerRoute(
                         name: "areas",
                         pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                 );
@@ -89,6 +60,8 @@ namespace IMS.Web
             });
 
             await app.CreateAdminRoleAsync();
+
+            app.ApplyMigrations();
 
             await app.RunAsync();
         }

@@ -22,7 +22,7 @@ namespace IMS.Web.Attributes
             //if (employeeService != null
             //    && employeeService.ExistsByUserIdAsync(context.HttpContext.User.Id()).Result == false)
             //{
-            //    context.Result = new RedirectToActionResult(nameof(EmployeeController.Become), "Instructor", null);
+            //    context.Result = new RedirectToActionResult(nameof(EmployeeController.Become), "Employee", null);
             //}
         }
     }

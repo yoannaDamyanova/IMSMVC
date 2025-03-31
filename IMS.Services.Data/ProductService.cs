@@ -199,7 +199,7 @@ namespace IMS.Services.Data
             int currentPage = 1,
             int classesPerPage = 1)
         {
-            var classesToShow = await repository.AllReadOnly<Product>()
+            var productsToShow = await repository.AllReadOnly<Product>()
                 .Where(p => p.IsAvailbale == true)
                 .Include(p => p.Supplier)
                 .Include(p => p.Category)
@@ -207,35 +207,35 @@ namespace IMS.Services.Data
 
             if (category != null)
             {
-                classesToShow = classesToShow.Where(c => c.Category.Name == category).ToList();
+                productsToShow = productsToShow.Where(c => c.Category.Name == category).ToList();
             }
 
             if (supplier != null)
             {
-                classesToShow = classesToShow.Where(c => c.Supplier.Name == supplier).ToList();
+                productsToShow = productsToShow.Where(c => c.Supplier.Name == supplier).ToList();
             }
 
             if (searchTerm != null)
             {
                 string normalizedSearchTerm = searchTerm.ToLower();
-                classesToShow = classesToShow
+                productsToShow = productsToShow
                     .Where(c => (c.Name.ToLower().Contains(normalizedSearchTerm)) ||
                                 c.Supplier.Name.ToString().Contains(normalizedSearchTerm) ||
                                 c.Category.Name.ToString().Contains(normalizedSearchTerm)).ToList();
             }
 
-            classesToShow = sorting switch
+            productsToShow = sorting switch
             {
-                ProductSorting.PriceAscending => classesToShow.OrderBy(c => c.Price).ToList(),
-                ProductSorting.PriceDescending => classesToShow.OrderByDescending(c => c.Price).ToList(),
-                ProductSorting.CountAscening => classesToShow.OrderBy(c => c.Count).ToList(),
-                ProductSorting.CountDescening => classesToShow.OrderByDescending(c => c.Count).ToList(),
-                _ => classesToShow.OrderByDescending(c => c.Id).ToList(),
+                ProductSorting.PriceAscending => productsToShow.OrderBy(c => c.Price).ToList(),
+                ProductSorting.PriceDescending => productsToShow.OrderByDescending(c => c.Price).ToList(),
+                ProductSorting.CountAscening => productsToShow.OrderBy(c => c.Count).ToList(),
+                ProductSorting.CountDescening => productsToShow.OrderByDescending(c => c.Count).ToList(),
+                _ => productsToShow.OrderByDescending(c => c.Id).ToList(),
             };
 
-            var products = classesToShow
-                .Skip((currentPage - 1) * classesPerPage)
-                .Take(classesPerPage)
+            var products = productsToShow
+                .Skip((currentPage - 1) * classesPerPage) // прескача продуктите на предишните страници
+                .Take(classesPerPage) // взема само продуктите от текущата страница
                 .Select(c => new ProductServiceModel
                 {
                     Id = c.Id,
@@ -245,7 +245,7 @@ namespace IMS.Services.Data
                     PhotoFileName = c.ImgPath
                 }).ToList();
 
-            int totalProducts = classesToShow.Count;
+            int totalProducts = productsToShow.Count;
 
             return new ProductQueryServiceModel()
             {

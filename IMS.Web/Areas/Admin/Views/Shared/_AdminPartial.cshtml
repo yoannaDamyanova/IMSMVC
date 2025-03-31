@@ -19,7 +19,8 @@
 
         if (SignInManager.IsSignedIn(User))
         {
-            userName = User.FindFirstValue(IMS.Web.Infrastructure.Constants.CustomClaims.UserFullNameClaim) ?? string.Empty;
+            userName = User.FindFirstValue(IMS.Web.Infrastructure.Constants
+                .CustomClaims.UserFullNameClaim) ?? string.Empty;
         }
     }
 

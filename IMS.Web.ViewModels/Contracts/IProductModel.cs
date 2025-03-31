@@ -9,7 +9,6 @@ namespace IMS.Web.ViewModels.Contracts
     public interface IProductModel
     {
         string Name { get; set; }
-
         double Price { get; set; }
     }
 }
