@@ -59,9 +59,9 @@ namespace IMS.Web
                 endpoints.MapRazorPages();
             });
 
-            await app.CreateAdminRoleAsync();
-
             app.ApplyMigrations();
+
+            await app.CreateAdminRoleAsync();
 
             await app.RunAsync();
         }
