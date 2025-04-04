@@ -2,7 +2,7 @@
 @inject IProductService productService
 @inject IEmployeeService employeeService
 
-<div class="d-flex flex-column justify-content-between px-2">
+<div class="d-flex flex-column justify-content-between px-2" style="height: 370px;">
     <a class="glightbox" data-gallery="images-gallery">
         <div class="product-image-container">
             <img src="@Url.Content($"~/images/{Model.PhotoFileName}")" class="img-fluid" alt="@Model.Name">
@@ -10,14 +10,14 @@
     </a>
     <!-- Product Details -->
     <a asp-controller="Product" asp-action="Details" asp-route-productId="@Model.Id">
-        <h4>@Model.Name</h4>
+        <h5>@Model.Name</h5>
     </a>
-    <p class="price">@Model.Price лв.</p>
+    <p class="price mb-1">@Model.Price лв.</p>
     <p class="ingridients">Заявени: @Model.Count бр.</p>
     <!-- Admin/Employee Actions -->
     @if (User?.Identity?.IsAuthenticated == true)
     {
-        <div class="row gy-2">
+        <div class="row gy-1">
 
             @if (User.IsAdmin())
             {

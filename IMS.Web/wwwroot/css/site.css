@@ -1400,19 +1400,31 @@ section,
     }
 
     .gallery .product-image-container {
-        width: 100%;
-        height: 300px; /* Fixed height */
+        width:contain;
+        height: 140px; /* Fixed height */
         display: flex;
         justify-content: center;
-        align-items: center;
         overflow: hidden; /* Crop any overflow */
     }
 
     .gallery .swiper-slide:not(.swiper-slide-active) {
         background-color: white;
         padding: 20px;
-        min-height: 550px;
+        min-height: 400px;
     }
+
+    .gallery .price,
+    .gallery .ingridients {
+        font-size: 16px;
+    }
+
+    .gallery .btn {
+        font-size: 12px;
+    }
+
+        .gallery .btn .more-btn {
+            padding: 4px 15px 4px 15px;
+        }
     
 
 @media (min-width: 992px) {

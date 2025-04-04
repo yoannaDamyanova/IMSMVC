@@ -114,10 +114,10 @@
                             <div class="col">
                                 <div class="card info-card">
                                     <div class="card-body">
-                                        <h5 class="card-title">Продукти</h5>
+                                        <h5 class="card-title">Продукти - @employee.Products?.Count() бр.</h5>
                                         @if (employee.Products != null && employee.Products.Any())
                                         {
-                                            <div class="swiper init-swiper office-swiper">
+                                            <div class="swiper init-swiper employee-swiper">
                                                 <div class="swiper-wrapper align-items-center">
                                                     @foreach (var product in employee.Products) // Display up to 3 products
                                                     {
@@ -140,6 +140,7 @@
                     </div>
                 </div>
             }
+       
         </div>
     </section>
 </main><!-- End #main -->

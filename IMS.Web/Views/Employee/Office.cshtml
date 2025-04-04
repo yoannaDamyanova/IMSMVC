@@ -52,7 +52,7 @@
     </div><!-- End Section Title -->
 
     <div class="container" data-aos="fade-up" data-aos-delay="100">
-        @if (Model.Products.Any() == true)
+        @if (Model.Products?.Any() == true)
         {
             <div class="swiper init-swiper office-swiper">
                 <div class="swiper-wrapper align-items-center">
@@ -64,6 +64,10 @@
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
+        }
+        else
+        {
+            <h3>В момента няма зявени продукти!</h3>
         }
     </div>
 </section><!-- /Gallery Section -->
