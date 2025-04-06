@@ -101,7 +101,7 @@ namespace IMS.Data.Migrations
                         {
                             Id = "06e4a52b-0ee1-426f-b7a2-6b009a0c1f65",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "afc746a5-5d78-4725-acff-94857ee58f23",
+                            ConcurrencyStamp = "31811420-5fb4-45d6-bfb9-0a9e6edb3456",
                             Email = "employee@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Emilia",
@@ -109,9 +109,9 @@ namespace IMS.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "employee@gmail.com",
                             NormalizedUserName = "employee@gmail.com",
-                            PasswordHash = "AQAAAAIAAYagAAAAEA9ZSbIVRTZjZ69wCP4/C4ZWdMpuOPnbh6xRu3PjP5aq6+0hJUZl6TpQldy1matRFw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDaYbfsTRwyWQ88g+1cvlkDqxqWeali4qK6L/7rhybbfTeEvyty2/2B6P1HEUxaSBA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e0b9f047-3531-498b-b2dc-8f9464a9eda3",
+                            SecurityStamp = "dd36b68c-26da-486b-910d-457e342b57ae",
                             TwoFactorEnabled = false,
                             UserName = "employee@gmail.com"
                         },
@@ -119,7 +119,7 @@ namespace IMS.Data.Migrations
                         {
                             Id = "69b38fdd-0aba-47f5-9f2b-6c7bb549d7ab",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2171e1d2-87d5-43f3-9c9c-91a81054df8c",
+                            ConcurrencyStamp = "c33ea39c-20d6-464a-80e6-a9329184ed1e",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Great",
@@ -127,9 +127,9 @@ namespace IMS.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEGifPsg2lWas4pVuuXLPZOqW62tvIaGbFuOq5Gpk8dd0X4sGD1jBID/hAi0Gd2BHQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGvKrcUUouxY7aiqD23qLih5owF7PH7/hR9QaKUz+9D67Q15vTqY3Hsj2bBoiLb3GQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fc09f64e-db01-46ae-bbb7-dc2721eaf4df",
+                            SecurityStamp = "4fde2b04-be22-41d0-a5c6-994a42db5511",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -259,6 +259,30 @@ namespace IMS.Data.Migrations
                             CommercialSiteId = 3,
                             ProductId = new Guid("7508feee-3168-401e-84d7-9e126b394196"),
                             ProductCount = 10
+                        },
+                        new
+                        {
+                            CommercialSiteId = 1,
+                            ProductId = new Guid("62f797e8-e161-4d59-a29a-b1a806b45edb"),
+                            ProductCount = 50
+                        },
+                        new
+                        {
+                            CommercialSiteId = 1,
+                            ProductId = new Guid("aef8b15d-c498-4ee4-a31f-ef67e1c970c7"),
+                            ProductCount = 30
+                        },
+                        new
+                        {
+                            CommercialSiteId = 1,
+                            ProductId = new Guid("35970b4c-ac84-4e23-bf98-ac1785d736da"),
+                            ProductCount = 100
+                        },
+                        new
+                        {
+                            CommercialSiteId = 1,
+                            ProductId = new Guid("4e861aa5-5553-456e-bd6f-4312ffc05563"),
+                            ProductCount = 15
                         });
                 });
 

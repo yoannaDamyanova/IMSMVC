@@ -19,7 +19,11 @@ namespace IMS.Data.SeedDb
             {
                 data.BalkanTradeHubSamsungGalaxyS23,
                 data.BlackSeaLogisticsCenterWilsonEvolutionIndoorBasketball,
-                data.DanubeCommerceParkBoschCordlessDrill
+                data.DanubeCommerceParkBoschCordlessDrill,
+                data.BalkanTradeHubDove,
+                data.BalkanTradeHubBasketball,
+                data.BalkanTradeHubLays,
+                data.BalkanTradeHubLevis
             });
         }
     }

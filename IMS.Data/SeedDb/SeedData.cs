@@ -45,6 +45,10 @@ namespace IMS.Data.SeedDb
         public CommercialSite DanubeCommercePark { get; set; }
 
         public CommercialSiteProduct BalkanTradeHubSamsungGalaxyS23 { get; set; }
+        public CommercialSiteProduct BalkanTradeHubLevis { get; set; }
+        public CommercialSiteProduct BalkanTradeHubLays { get; set; }
+        public CommercialSiteProduct BalkanTradeHubDove { get; set; }
+        public CommercialSiteProduct BalkanTradeHubBasketball { get; set; }
         public CommercialSiteProduct BlackSeaLogisticsCenterWilsonEvolutionIndoorBasketball { get; set; }
         public CommercialSiteProduct DanubeCommerceParkBoschCordlessDrill { get; set; }
 
@@ -330,6 +334,34 @@ namespace IMS.Data.SeedDb
                 ProductId = SamsungGalaxyS23.Id,
                 CommercialSiteId = BalkanTradeHub.Id,
                 ProductCount = 20
+            };
+
+            BalkanTradeHubBasketball = new CommercialSiteProduct()
+            {
+                ProductId = WilsonEvolutionIndoorBasketball.Id,
+                CommercialSiteId = BalkanTradeHub.Id,
+                ProductCount = 30
+            };
+
+            BalkanTradeHubLevis = new CommercialSiteProduct()
+            {
+                ProductId = Levis501OriginalJeans.Id,
+                CommercialSiteId = BalkanTradeHub.Id,
+                ProductCount = 15
+            };
+
+            BalkanTradeHubLays = new CommercialSiteProduct()
+            {
+                ProductId = LaysClassicPotatoChips.Id,
+                CommercialSiteId = BalkanTradeHub.Id,
+                ProductCount = 100
+            };
+
+            BalkanTradeHubDove = new CommercialSiteProduct()
+            {
+                ProductId = DoveDeepMoistureBodyWash.Id,
+                CommercialSiteId = BalkanTradeHub.Id,
+                ProductCount = 50
             };
 
             BlackSeaLogisticsCenterWilsonEvolutionIndoorBasketball = new CommercialSiteProduct()
