@@ -14,5 +14,9 @@ namespace IMS.Common
         public const string CountErrorMessage = "Въведеният брой трябва да е между {0} и {1}!";
 
         public const string PriceErrorMessage = "Цената трябва да е между {0} и {1}!";
+
+        public const string EmailErrorMessage = "Имейл адресът не е валиден!";
+
+        public const string NameErrorMessage = "Въведенето име трябва да е между {2} и {1} символа дълго.";
     }
 }
