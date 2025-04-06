@@ -1,29 +1,69 @@
-FitnessClassBooking System is a simple ASP.Net MVC project.
-Functunalities:
-1. User -> 
-   - Book/Cancel Fitness class bookings
-   - Review Finished classes
-   - Give Instructors ratings
-   - Become Instructor
-2. Instructor
-   - Add/Edit/Delete Fitness classes
-   - Cancel classes
-3. Admin
-   - Add/Edit/Delete/Cancel/Approve Fitness classes
-4. FitnessClass
-   - Each class can acquire for different statuses(active, canceled, finished, full). On every load the StartTime of each class is checked for being in the past --> if the StartTime is a past date, the status becomes           finished. 
 
-Disclaimer: To become instructor a user has to provide a "legitimate" License number. License numbers are generated using a background service and are used just for showcasing (they wont regenerate if they already exist). All license numbers can be found in the FitnessApp.Services.Data folder in the subfolder Licenses.
+## 📦 **Stockly** – Inventory Management, Made Simple
 
-Credentials:
-1. Admin:
-   - email: admin@gmail.com
-   - password: admin123
-2. Instructor:
-   - email: instructor@gmail.com
-   - password: john123
+Welcome to **Stockly** – your sleek, efficient, and user-friendly **Inventory Management System** that does all the boring stuff so you don’t have to.
 
-Instructions for loading:
-The application's startup project should be FitnessApp.Web.
-Then you shoudl type update-database in the Package Manager Console, ensuring that the Default Project is Data\FitnessApp.Data.
-The connection string constant is in the appsettings.json file.
+No more Excel chaos. No more wondering *“Where did all the USB mice go?”*  
+Stockly is here to take charge of your stock like an over-caffeinated warehouse manager on a mission.
+
+---
+
+### 🚀 Features
+
+#### 🔐 Authentication & Roles
+- Secure login system with Identity
+- Admin-only dashboard for high-level management
+- Role-based access (e.g. admin, employee)
+
+#### 📁 Product Management
+- Add, edit, and delete product listings
+- Track stock quantity, price, categories, and descriptions
+- Visual overview of all products in a clean table layout
+
+#### 🏷️ Category & Brand Control
+- Manage product categories and brands with ease
+- Filter products by category or brand for fast lookups
+
+#### 📦 Inventory Tracking
+- Monitor real-time stock levels
+- Prevent negative stock with smart validation
+- Automatic stock status updates (e.g. low stock warning)
+
+#### 🧑‍💼 User Management (Admin-only)
+- View all registered users
+- Assign roles, manage accounts, and keep things tight
+
+### 🛠️ Built With
+- **ASP.NET Core MVC** with Razor Pages
+- **Entity Framework Core** for database management
+- **SQL Server** as the default DB
+- **Bootstrap 5** for a clean and responsive UI
+
+### 🧪 How to Run
+
+1. Clone the repo:
+```bash
+git clone https://github.com/yourusername/Stockly.git
+```
+
+2. Open the solution in Visual Studio
+
+2. Open the solution in Visual Studio
+
+3. In `appsettings.json`, update the connection string to match your SQL Server name:
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=YOUR_SERVER_NAME;Database=StocklyDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+}
+```
+
+4. Run the project (`Ctrl + F5`)
+
+> Default admin credentials are seeded. Look in the SeedData.cs.
+
+
+### ✨ Why Stockly?
+
+Stockly doesn’t try to be an enterprise ERP system from 2003. It’s lightweight, fast, and does one thing really well: **managing your stock without driving you insane**.
+
+Whether you’re running a small online store or a full warehouse — Stockly’s got your back.
